@@ -1,0 +1,15 @@
+{
+  "name": "ginvest-backend-node",
+  "version": "1.0.0",
+  "description": "ginvest-backend-node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "origin https://github.com/wbrfeu/ginvest-backend-node.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
