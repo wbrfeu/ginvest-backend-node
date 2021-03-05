@@ -1,9 +1,9 @@
 import { EstoqueTD, MovimentoTD } from '../../domain/entities/tesourodireto.js'
 
 class DatabaseMock {
-    constructor() {
-        this.movimentoTD = []
+    movimentoTD = []
 
+    constructor() {
         var td1 = new MovimentoTD("M", 1, "Easy", "LFT25", "1/2/2021", "c", "l1", 100, 1000)
         var td2 = new MovimentoTD("W", 2, "Easy", "LFT25", "2/2/2021", "c", "l2", 50, 500)
         var td3 = new MovimentoTD("M", 3, "Clear", "LTN35", "3/2/2021", "c", "l3", 50, 500)

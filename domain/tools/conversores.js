@@ -4,4 +4,12 @@ function stringToDate(dateString) {
     return new Date(`${yyyy}-${mm}-${dd}`)
 }
 
-export { stringToDate }
+// Garante que um objeto é do tipo Date e, caso não for, converte para Date
+function convertToDate(obj) {
+    if (obj instanceof Date) {
+        return obj
+    }
+    return stringToDate(obj)
+}
+
+export { convertToDate }

@@ -1,4 +1,4 @@
-import { stringToDate } from '../tools/conversores.js'
+import { convertToDate } from '../tools/conversores.js'
 
 class MovimentoTD {
     constructor(user, numNotaNegoc, corret, isin, dtnegoc, cv, lote, quant, vlliq) {
@@ -6,8 +6,8 @@ class MovimentoTD {
         this.numeroNotaNegociacao = numNotaNegoc
         this.idCorretora = corret
         this.codIsin = isin
-        this.dataNegociacao = stringToDate(dtnegoc)
-        this.indicadorCV = cv
+        this.dataNegociacao = convertToDate(dtnegoc)
+        this.indicadorCV = cv.toLowerCase()
         this.idLote = lote
         this.quantidade = quant
         this.valorLiquido = vlliq
