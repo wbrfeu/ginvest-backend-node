@@ -14,7 +14,7 @@ class ProcessaTesouroDireto {
     }
 
     processaNovaNotaNegociacao(novaNN) {
-        let estoqueAtual = this.db.leEstoqueAtualTesouroDireto()
+        let estoqueAtual = this.db.leEstoqueAtualTD()
         let estoqueOrdenado = this.ordenaEstoquePorData(estoqueAtual)
 
         let nnProcessada = []
@@ -48,7 +48,7 @@ class ProcessaTesouroDireto {
                                 itemNN.indicadorCV,
                                 itemEst.idLote,
                                 saldoAVenderNN,
-                                saldoAVenderNN*itemNN.valorUnitario
+                                saldoAVenderNN * itemNN.valorUnitario
                             )
 
                             itemEst.quantidade = itemEst.quantidade - saldoAVenderNN
@@ -68,7 +68,7 @@ class ProcessaTesouroDireto {
                                 itemNN.indicadorCV,
                                 itemEst.idLote,
                                 itemEst.quantidade,
-                                itemEst.quantidade*itemNN.valorUnitario
+                                itemEst.quantidade * itemNN.valorUnitario
                             )
 
                             saldoAVenderNN = saldoAVenderNN - itemEst.quantidade
