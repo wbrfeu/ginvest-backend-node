@@ -13,6 +13,11 @@ class ProcessaTesouroDireto {
         return estoqueOrdenado
     }
 
+    processaESalvaNovaNotaNegociacao(novaNN) {
+        let nnProcessada = this.processaNovaNotaNegociacao(novaNN)
+        this.db.salvaNovaNotaNegociacao(nnProcessada)
+    }
+
     processaNovaNotaNegociacao(novaNN) {
         let estoqueAtual = this.db.leEstoqueAtualTD()
         let estoqueOrdenado = this.ordenaEstoquePorData(estoqueAtual)
@@ -50,6 +55,8 @@ class ProcessaTesouroDireto {
                                 saldoAVenderNN,
                                 saldoAVenderNN * itemNN.valorUnitario
                             )
+                            novoItem.dataCompraCorresp = itemEst.dataNegociacao
+                            novoItem.valorUnitarioCompraCorresp = itemEst.valorUnitario
 
                             itemEst.quantidade = itemEst.quantidade - saldoAVenderNN
                             saldoAVenderNN = 0
@@ -70,6 +77,8 @@ class ProcessaTesouroDireto {
                                 itemEst.quantidade,
                                 itemEst.quantidade * itemNN.valorUnitario
                             )
+                            novoItem.dataCompraCorresp = itemEst.dataNegociacao
+                            novoItem.valorUnitarioCompraCorresp = itemEst.valorUnitario
 
                             saldoAVenderNN = saldoAVenderNN - itemEst.quantidade
                             itemEst.quantidade = 0
@@ -79,7 +88,6 @@ class ProcessaTesouroDireto {
                         if (saldoAVenderNN === 0) {
                             break
                         }
-
                     }
                 }
 

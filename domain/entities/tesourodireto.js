@@ -12,6 +12,8 @@ class MovimentoTD {
         this.quantidade = quant
         this.valorLiquido = vlliq
         this.valorUnitario = vlliq/quant
+        this.dataCompraCorresp = null
+        this.valorUnitarioCompraCorresp = null
     }
 }
 
@@ -25,6 +27,7 @@ class EstoqueTD {
         this.idLote = lote
         this.quantidade = quant
         this.valorLiquido = vlliq
+        this.valorUnitario = vlliq/quant
     }
 }
 

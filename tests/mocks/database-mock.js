@@ -5,9 +5,9 @@ class DatabaseMock {
 
     constructor() {
         var td1 = new MovimentoTD("M", 1, "Easy", "LFT25", "1/2/2021", "c", "l1", 100, 1000)
-        var td2 = new MovimentoTD("W", 2, "Easy", "LFT25", "2/2/2021", "c", "l2", 50, 500)
-        var td3 = new MovimentoTD("M", 3, "Clear", "LTN35", "3/2/2021", "c", "l3", 50, 500)
-        var td4 = new MovimentoTD("M", 4, "Easy", "LFT25", "4/2/2021", "c", "l4", 100, 1000)
+        var td2 = new MovimentoTD("W", 2, "Easy", "LFT25", "2/2/2021", "c", "l2", 50, 550)
+        var td3 = new MovimentoTD("M", 3, "Clear", "LTN35", "3/2/2021", "c", "l3", 50, 600)
+        var td4 = new MovimentoTD("M", 4, "Easy", "LFT25", "4/2/2021", "c", "l4", 100, 1300)
         this.tabelaMovimentoTD.push(td4)
         this.tabelaMovimentoTD.push(td1)
         this.tabelaMovimentoTD.push(td3)
