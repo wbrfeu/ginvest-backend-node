@@ -8,8 +8,8 @@ td.setDatabase(db)
 
 // Cria uma nova NN para processar e salvar no banco de dados
 let novaNN = []
-let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/2/2021", "C", null, 100, 1400)
-let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "12/2/2021", "V", null, 120, 1800)
+let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
+let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "04/02/2021", "V", null, 120, 1800)
 novaNN.push(td10)
 novaNN.push(td20)
 
