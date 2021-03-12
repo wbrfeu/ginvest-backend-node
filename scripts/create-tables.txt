@@ -1,0 +1,14 @@
+CREATE TABLE movimentotd (
+	idUser text,
+	numeroNotaNegociacao text,
+	idCorretora text,
+	codIsin text,
+	dataNegociacao date,
+	indicadorCV text,
+	idLote text,
+	quantidade float8,
+	valorLiquido float8,
+	valorUnitario float8,
+	dataCompraCorresp date,
+	valorUnitarioCompraCorresp float8
+);
