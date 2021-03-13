@@ -1,7 +1,7 @@
 // Inicializa todos os recursos necessários ao funcionamento do sistema
 
-import { inicializaVariaveisAmbiente } from './environment/start-env.js'
-import { inicializaDatabase } from './database/start-database.js'
+import { inicializaVariaveisAmbiente } from './environment/init-env.js'
+import { inicializaDatabase } from './database/init-database.js'
 
 async function inicializaInfra() {
     inicializaVariaveisAmbiente()

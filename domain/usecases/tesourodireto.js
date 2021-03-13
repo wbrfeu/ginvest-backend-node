@@ -13,13 +13,15 @@ class ProcessaTesouroDireto {
         return estoqueOrdenado
     }
 
-    processaESalvaNovaNotaNegociacao(novaNN) {
-        let nnProcessada = this.processaNovaNotaNegociacao(novaNN)
-        this.db.salvaNovaNotaNegociacao(nnProcessada)
+    async processaESalvaNovaNotaNegociacao(novaNN) {
+        let nnProcessada = await this.processaNovaNotaNegociacao(novaNN)
+        await this.db.salvaNovaNotaNegociacao(nnProcessada)
     }
 
-    processaNovaNotaNegociacao(novaNN) {
-        let estoqueAtual = this.db.leEstoqueAtualTD()
+    async processaNovaNotaNegociacao(novaNN) {
+        let estoqueAtual = await this.db.leEstoqueAtualTD()
+        console.log("Estoque Atual: ")
+        console.log(estoqueAtual)
         let estoqueOrdenado = this.ordenaEstoquePorData(estoqueAtual)
 
         let nnProcessada = []
