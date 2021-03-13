@@ -7,8 +7,15 @@ class Database {
 
         const sql = `SELECT iduser, numeronotanegociacao, idcorretora, codisin, datanegociacao, idlote, 
                      quantidade, valorliquido FROM movimentotd;`
-        
-        let result = await dbClient.query(sql)
+
+        let result = null
+
+        try {
+            result = await dbClient.query(sql)
+        } catch (e) {
+            console.log(`Erro ao Ler o Estoque TD: ${e}`)
+            return null
+        }
 
         let estoque = []
 
@@ -16,13 +23,13 @@ class Database {
             let r = result.rows[i];
 
             let est = new EstoqueTD(
-                r.iduser, 
-                r.numeronotanegociacao, 
-                r.idcorretora, 
-                r.codisin, 
-                r.datanegociacao, 
-                r.idlote, 
-                r.quantidade, 
+                r.iduser,
+                r.numeronotanegociacao,
+                r.idcorretora,
+                r.codisin,
+                r.datanegociacao,
+                r.idlote,
+                r.quantidade,
                 r.valorliquido
             )
 
@@ -32,11 +39,11 @@ class Database {
         return estoque
 
     }
-    
 
-    salvaNovaNotaNegociacao(novaNN) {}
 
-    
+    salvaNovaNotaNegociacao(novaNN) { }
+
+
 }
 
 export { Database }
