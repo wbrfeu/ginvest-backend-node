@@ -23,7 +23,6 @@ class DatabaseMock {
 
             const est = new EstoqueTD(
                 mov.idUser,
-                mov.numeroNotaNegociacao,
                 mov.idCorretora,
                 mov.codIsin,
                 mov.dataNegociacao,

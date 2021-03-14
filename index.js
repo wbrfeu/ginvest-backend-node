@@ -19,21 +19,21 @@ async function main() {
 
     // Teste de Requisição de Estoque - depois vai ser pedido pelo Frontend
     let db = new Database()
-    // let r = await db.leEstoqueAtualTD(idUser)
-    // console.log(`Estoque antes de Processar NN: `)
-    // console.log(r)
+    let r = await db.leEstoqueAtualTD(idUser)
+    console.log(`Estoque antes de Processar NN: `)
+    console.log(r)
 
     // Teste de Processar nova Nota de Negociação - depois vai ser pedido pelo Frontend
-    let td = new ProcessaTesouroDireto()
-    td.setDatabase(db)
+    // let td = new ProcessaTesouroDireto()
+    // td.setDatabase(db)
 
-    let novaNN = []
-    let td10 = new MovimentoTD("W", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
-    let td20 = new MovimentoTD("W", 10, "Easy", "LFT25", "10/02/2021", "V", null, 120, 1800)
-    novaNN.push(td10)
-    novaNN.push(td20)
+    // let novaNN = []
+    // let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
+    // let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "V", null, 120, 1800)
+    // novaNN.push(td10)
+    // novaNN.push(td20)
 
-    await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
+    // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
 }
 
 main()

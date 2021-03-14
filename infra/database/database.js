@@ -5,8 +5,15 @@ class Database {
 
     async leEstoqueAtualTD(idUser) {
 
-        const sql = `SELECT iduser, numeronotanegociacao, idcorretora, codisin, datanegociacao, idlote, 
-                    quantidade, valorliquido FROM movimentotd WHERE iduser = $1;`
+        //const sql = `SELECT iduser, idcorretora, codisin, datanegociacao, idlote, 
+        //            quantidade, valorliquido FROM movimentotd WHERE iduser = $1;`
+        const sql = `with a as (select iduser, idcorretora, codisin, datanegociacao, indicadorcv, idlote, quantidade, valorunitario,
+                                        (case when indicadorcv = 'c' then quantidade else -quantidade end) as quant
+                                from movimentotd where iduser = $1),
+                          b as (select idlote, sum(quant) as quantliq from a group by idlote)
+                    select a.iduser, a.idcorretora, a.codisin, a.datanegociacao, b.idlote, b.quantliq, a.valorunitario
+                    from b inner join a on b.idlote = a.idlote
+                    where b.quantliq>0 and a.indicadorcv= 'c';`
 
         let result = null
 
@@ -24,13 +31,12 @@ class Database {
 
             let est = new EstoqueTD(
                 r.iduser,
-                r.numeronotanegociacao,
                 r.idcorretora,
                 r.codisin,
                 r.datanegociacao,
                 r.idlote,
-                r.quantidade,
-                r.valorliquido
+                r.quantliq,
+                r.valorunitario
             )
 
             estoque.push(est)

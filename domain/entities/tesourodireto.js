@@ -18,16 +18,14 @@ class MovimentoTD {
 }
 
 class EstoqueTD {
-    constructor(user, numNotaNegoc, corret, isin, dtnegoc, lote, quant, vlliq) {
+    constructor(user, corret, isin, dtnegoc, lote, quant, valorunit) {
         this.idUser = user
-        this.numeroNotaNegociacao = numNotaNegoc
         this.idCorretora = corret
         this.codIsin = isin
         this.dataNegociacao = dtnegoc
         this.idLote = lote
         this.quantidade = quant
-        this.valorLiquido = vlliq
-        this.valorUnitario = vlliq/quant
+        this.valorUnitario = valorunit
     }
 }
 
