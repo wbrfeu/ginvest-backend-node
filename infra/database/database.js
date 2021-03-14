@@ -3,15 +3,15 @@ import { EstoqueTD } from '../../domain/entities/tesourodireto.js'
 
 class Database {
 
-    async leEstoqueAtualTD() {
+    async leEstoqueAtualTD(idUser) {
 
         const sql = `SELECT iduser, numeronotanegociacao, idcorretora, codisin, datanegociacao, idlote, 
-                    quantidade, valorliquido FROM movimentotd;`
+                    quantidade, valorliquido FROM movimentotd WHERE iduser = $1;`
 
         let result = null
 
         try {
-            result = await dbClient.query(sql)
+            result = await dbClient.query(sql, [idUser])
         } catch (e) {
             console.log(`Erro ao Ler o Estoque TD: ${e}`)
             return null

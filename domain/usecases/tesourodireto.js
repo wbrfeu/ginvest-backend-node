@@ -13,39 +13,34 @@ class ProcessaTesouroDireto {
         return estoqueOrdenado
     }
 
-    async processaESalvaNovaNotaNegociacao(novaNN) {
-        let nnProcessada = await this.processaNovaNotaNegociacao(novaNN)
+    async processaESalvaNovaNotaNegociacao(novaNN, idUser) {
+        let nnProcessada = await this.processaNovaNotaNegociacao(novaNN, idUser)
         await this.db.salvaNovaNotaNegociacao(nnProcessada)
     }
 
-    async processaNovaNotaNegociacao(novaNN) {
-        let estoqueAtual = await this.db.leEstoqueAtualTD()
-        console.log("Estoque Atual: ")
-        console.log(estoqueAtual)
+    async processaNovaNotaNegociacao(novaNN, idUser) {
+        let estoqueAtual = await this.db.leEstoqueAtualTD(idUser)
         let estoqueOrdenado = this.ordenaEstoquePorData(estoqueAtual)
-
         let nnProcessada = []
 
         for (let i = 0; i < novaNN.length; i++) {
             const itemNN = novaNN[i];
 
-            if (itemNN.indicadorCV === "c") {
+            if (itemNN.indicadorCV === "c" && itemNN.idUser === idUser) {
                 itemNN.idLote = uuidv4()
                 nnProcessada.push(itemNN)
             }
-            else if (itemNN.indicadorCV === "v") {
+            else if (itemNN.indicadorCV === "v" && itemNN.idUser === idUser) {
                 let saldoAVenderNN = itemNN.quantidade
 
                 for (let j = 0; j < estoqueOrdenado.length; j++) {
                     const itemEst = estoqueOrdenado[j];
 
-                    if (itemNN.idUser === itemEst.idUser && itemNN.codIsin === itemEst.codIsin && itemNN.idCorretora === itemEst.idCorretora) {
-
+                    if (itemNN.codIsin === itemEst.codIsin && itemNN.idCorretora === itemEst.idCorretora) {
                         let quantDisponivelEst = itemEst.quantidade
 
                         if (quantDisponivelEst >= saldoAVenderNN) {
                             // o item do estoque consegue consumir todo o saldo a vender
-
                             let novoItem = new MovimentoTD(
                                 itemNN.idUser,
                                 itemNN.numeroNotaNegociacao,
@@ -67,7 +62,6 @@ class ProcessaTesouroDireto {
                         else {
                             // só dá para consumir parcialmente o saldo a vender
                             // e vai ter que passar para os próximos item do estoque
-
                             let novoItem = new MovimentoTD(
                                 itemNN.idUser,
                                 itemNN.numeroNotaNegociacao,
