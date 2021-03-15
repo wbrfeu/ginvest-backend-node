@@ -5,13 +5,13 @@ class Database {
 
     async leEstoqueAtualTD(idUser) {
 
-        const sql = `with a as (select iduser, idcorretora, codisin, datanegociacao, indicadorcv, idlote, quantidade, valorunitario,
-                                        (case when indicadorcv = 'c' then quantidade else -quantidade end) as quant
-                                from movimentotd where iduser = $1),
-                          b as (select idlote, sum(quant) as quantliq from a group by idlote)
-                    select a.iduser, a.idcorretora, a.codisin, a.datanegociacao, b.idlote, b.quantliq, a.valorunitario
-                    from b inner join a on b.idlote = a.idlote
-                    where b.quantliq>0 and a.indicadorcv= 'c';`
+        const sql = `with a as (select id_user, id_corretora, cod_isin, data_negociacao, indicador_cv, id_lote, quantidade, valor_unitario,
+                                        (case when indicador_cv = 'c' then quantidade else -quantidade end) as quant
+                                from movimento_td where id_user = $1),
+                          b as (select id_lote, sum(quant) as quant_liq from a group by id_lote)
+                    select a.id_user, a.id_corretora, a.cod_isin, a.data_negociacao, b.id_lote, b.quant_liq, a.valor_unitario
+                    from b inner join a on b.id_lote = a.id_lote
+                    where b.quant_liq>0 and a.indicador_cv= 'c';`
 
         let result = null
 
@@ -28,13 +28,13 @@ class Database {
             let r = result.rows[i]
 
             let est = new EstoqueTD(
-                r.iduser,
-                r.idcorretora,
-                r.codisin,
-                r.datanegociacao,
-                r.idlote,
-                r.quantliq,
-                r.valorunitario
+                r.id_user,
+                r.id_corretora,
+                r.cod_isin,
+                r.data_negociacao,
+                r.id_lote,
+                r.quant_liq,
+                r.valor_unitario
             )
 
             estoque.push(est)
@@ -45,9 +45,9 @@ class Database {
     }
 
     async salvaNovaNotaNegociacao(novaNN) {
-        const sql = `INSERT INTO movimentotd
-            (iduser, numeronotanegociacao, idcorretora, codisin, datanegociacao, indicadorcv, 
-            idlote, quantidade, valorliquido, valorunitario, datacompracorresp, valorunitariocompracorresp)
+        const sql = `INSERT INTO movimento_td
+            (id_user, numero_nota_negociacao, id_corretora, cod_isin, data_negociacao, indicador_cv, 
+            id_lote, quantidade, valor_liquido, valor_unitario, data_compra_corresp, valor_unitario_compra_corresp)
             VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`
 
         for (let i = 0; i < novaNN.length; i++) {
