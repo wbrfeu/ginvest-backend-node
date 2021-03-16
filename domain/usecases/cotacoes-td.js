@@ -10,42 +10,41 @@ Objeto que fornece as cotações Atuais do TD
         > data de hoje existe na tabela mas está no horário comercial e dia útil, está no
         horário comercial mas está com "N" horas de atraso.
     - Caso a API do tesouro não responda por qualquer motivo manter a tabela desetualizada.
+    
+    Algorítmo:
+    - Busca data atual e compara com a data da última gravação no banco cotações TD.
+    Se a diferença entre as duas datas 
 
 */
 
-import { CotacaoTD } from "../entities/tesourodireto.js"
-import axios from 'axios'
-import https from 'https'
-
+import { ApiTesouroDireto } from "../../infra/apis-externas/api-td.js"
 
 class CotacoesTesouroDireto {
 
-    leCotacoesAtuais(listaCodIsin) {}
+    async leCotacoesAtuais() {
+        const agora = new Date()
 
-    async leApiTD() {
-        try {
-            const httpsAgent = new https.Agent({ rejectUnauthorized: false })
-    
-            const resp = await axios.get(
-                'https://www.tesourodireto.com.br/json/br/com/b3/tesourodireto/service/api/treasurybondsinfo.json',
-                { httpsAgent }
-            )
-    
-            const listaTD = resp.data.response.TrsrBdTradgList
+        const dao = new DaoCotacoesTD()
+        const ultimaAtualizacao = await dao.leDataUltimAtualizacao()
 
-            const listaCotacoesTD = []
-    
-            for (let i = 0; i < listaTD.length; i++) {
-                const td = listaTD[i];
-                const cot = new CotacaoTD(td.TrsrBd.nm, td.TrsrBd.isinCd, td.TrsrBd.untrRedVal, td.TrsrBd.mtrtyDt)
-                listaCotacoesTD.push(cot)
-            }
 
-            return listaCotacoesTD
 
-        } catch (e) {
-            console.error(`Erro ao Ler a API do site TD: ${e}`)
+    }
+
+    eNecessarioLerApiTD(agora, ultimaAtualizacao) {
+        // Se o agora é sábado ou domingo não precisa ler a API
+        if (agora.getDay() === 0 || agora.getDay() === 6) { return false }
+
+        // Se o dia é diferente então tem que ler a API do TD
+        if (agora.getFullYear() != ultimaAtualizacao.getFullYear() ||
+            agora.getMonth() != ultimaAtualizacao.getMonth() ||
+            agora.getDate() != ultimaAtualizacao.getDate()) {
+            return true
         }
+
+        if() {} // TODO - implementar regras de horário comercial
+
+
     }
 }
 

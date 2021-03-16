@@ -1,7 +1,4 @@
 import { inicializaInfra } from './infra/init-infra.js'
-import { Database } from './infra/database/database.js' // TODO - Somente um teste APAGAR
-import { ProcessaTesouroDireto } from './domain/usecases/tesourodireto.js' // TODO - Somente um teste APAGAR
-import { MovimentoTD } from './domain/entities/tesourodireto.js'
 
 async function main() {
     try {
@@ -18,4 +15,4 @@ async function main() {
 
 main()
 
-
+// TODO - fazer loggs para o programa

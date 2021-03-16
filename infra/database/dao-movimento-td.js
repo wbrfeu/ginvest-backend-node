@@ -1,7 +1,7 @@
 import { dbClient } from './init-database.js'
 import { EstoqueTD } from '../../domain/entities/tesourodireto.js'
 
-class Database {
+class DaoMovimentoTD {
 
     async leEstoqueAtualTD(idUser) {
 
@@ -73,4 +73,4 @@ class Database {
     }
 }
 
-export { Database }
+export { DaoMovimentoTD }

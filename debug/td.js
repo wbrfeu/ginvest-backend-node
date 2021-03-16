@@ -1,8 +1,11 @@
 import { inicializaInfra } from '../infra/init-infra.js'
-import { Database } from '../infra/database/database.js'
+import { DaoMovimentoTD } from '../infra/database/dao-movimento-td.js'
 import { ProcessaTesouroDireto } from '../domain/usecases/tesourodireto.js'
 import { MovimentoTD } from '../domain/entities/tesourodireto.js'
 import { CotacoesTesouroDireto } from '../domain/usecases/cotacoes-td.js'
+import { ApiTesouroDireto } from '../infra/apis-externas/api-td.js'
+import { DaoCotacoesTD } from '../infra/database/dao-cotacoes-td.js'
+
 
 async function main() {
     try {
@@ -15,12 +18,11 @@ async function main() {
     console.log(`Sistema ${process.env.APP_NAME} Inicializado`)
 
     // --------------------------------------------------------------------------------------
-
-    // let idUser = "M" // Simula qual usuário está logado
-
+    
     //=================================================================
     // Inicializa Objetos necessários ao teste
-    // let db = new Database()
+    //let idUser = "M" // Simula qual usuário está logado
+    // let db = new DaoMovimentoTD()
     // let td = new ProcessaTesouroDireto()
     // td.setDatabase(db)
     //=================================================================
@@ -58,17 +60,37 @@ async function main() {
 
     //================================================================
     //Teste de Leitura da API do TD:
+    // const api = new ApiTesouroDireto()
+
+    // const listaCot = await api.leApiTD()
+
+    // console.log("Lista de Cotações TD:")
+    // console.log(listaCot)
+
+    //================================================================
+
+    //================================================================
+    //Teste de Leitura de Data da última Atualização da Tab Cotações_TD:
+    // const dao = new DaoCotacoesTD()
+    // const d = await dao.leDataUltimAtualizacao()
+    // console.log(d)
+    
+
+
+    //================================================================
+
+    //================================================================
+    //Teste de Leitura de Cotações do BD:
     const cottd = new CotacoesTesouroDireto()
+    const listaCot = await cottd.leCotacoesAtuais()
 
-    const listaCot = await cottd.leApiTD()
-
-    console.log("Lista de Cotações TD:")
-    console.log(listaCot)
 
     //================================================================
 }
 
 
 main()
+
+
 
 
