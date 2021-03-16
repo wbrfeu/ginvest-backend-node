@@ -48,9 +48,9 @@ async function main() {
     //=================================================================
     // Teste de Processar nova Nota de Negociação - depois vai ser pedido pelo Frontend
     let novaNN = []
-    let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
-    let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "v", null, 110, 1650)
-    novaNN.push(td10)
+    //let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
+    let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "04/02/2021", "v", null, 170, 1650)
+    //novaNN.push(td10)
     novaNN.push(td20)
     await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
     //=================================================================

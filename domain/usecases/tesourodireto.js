@@ -36,7 +36,7 @@ class ProcessaTesouroDireto {
                 for (let j = 0; j < estoqueOrdenado.length; j++) {
                     const itemEst = estoqueOrdenado[j];
 
-                    if (itemNN.codIsin === itemEst.codIsin && itemNN.idCorretora === itemEst.idCorretora) {
+                    if (itemNN.codIsin === itemEst.codIsin && itemNN.idCorretora === itemEst.idCorretora && itemEst.dataNegociacao < itemNN.dataNegociacao) {
                         let quantDisponivelEst = itemEst.quantidade
 
                         if (quantDisponivelEst >= saldoAVenderNN) {
