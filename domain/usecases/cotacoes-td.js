@@ -13,6 +13,10 @@ Objeto que fornece as cotações Atuais do TD
 
 */
 
+import { CotacaoTD } from "../entities/tesourodireto.js"
+import axios from 'axios'
+import https from 'https'
+
 
 class CotacoesTesouroDireto {
 
@@ -28,18 +32,21 @@ class CotacoesTesouroDireto {
             )
     
             const listaTD = resp.data.response.TrsrBdTradgList
+
+            const listaCotacoesTD = []
     
             for (let i = 0; i < listaTD.length; i++) {
                 const td = listaTD[i];
-                console.log("-------------------------------------")
-                console.log(td.TrsrBd.nm)
-                console.log(td.TrsrBd.isinCd)
-                console.log(td.TrsrBd.untrRedVal)
-                console.log(td.TrsrBd.mtrtyDt)
+                const cot = new CotacaoTD(td.TrsrBd.nm, td.TrsrBd.isinCd, td.TrsrBd.untrRedVal, td.TrsrBd.mtrtyDt)
+                listaCotacoesTD.push(cot)
             }
+
+            return listaCotacoesTD
+
         } catch (e) {
-            console.error(e)
+            console.error(`Erro ao Ler a API do site TD: ${e}`)
         }
     }
-
 }
+
+export { CotacoesTesouroDireto }

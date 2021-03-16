@@ -29,4 +29,14 @@ class EstoqueTD {
     }
 }
 
-export { MovimentoTD, EstoqueTD }
+class CotacaoTD {
+    constructor(nome, isin, valunitvenda, datavenc) {
+        this.nome = nome
+        this.codIsin = isin
+        this.valorUnitarioVenda = valunitvenda
+        this.dataVencimento = datavenc
+        this.atualizadoEm = new Date() //TODO - precisamos corrigir o fuso-horário??????
+    }
+}
+
+export { MovimentoTD, EstoqueTD, CotacaoTD }

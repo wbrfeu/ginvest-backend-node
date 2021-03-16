@@ -2,6 +2,7 @@ import { inicializaInfra } from '../infra/init-infra.js'
 import { Database } from '../infra/database/database.js'
 import { ProcessaTesouroDireto } from '../domain/usecases/tesourodireto.js'
 import { MovimentoTD } from '../domain/entities/tesourodireto.js'
+import { CotacoesTesouroDireto } from '../domain/usecases/cotacoes-td.js'
 
 async function main() {
     try {
@@ -15,13 +16,13 @@ async function main() {
 
     // --------------------------------------------------------------------------------------
 
-    let idUser = "M" // Simula qual usuário está logado
+    // let idUser = "M" // Simula qual usuário está logado
 
     //=================================================================
     // Inicializa Objetos necessários ao teste
-    let db = new Database()
-    let td = new ProcessaTesouroDireto()
-    td.setDatabase(db)
+    // let db = new Database()
+    // let td = new ProcessaTesouroDireto()
+    // td.setDatabase(db)
     //=================================================================
 
     //=================================================================
@@ -47,16 +48,26 @@ async function main() {
 
     //=================================================================
     // Teste de Processar nova Nota de Negociação - depois vai ser pedido pelo Frontend
-    let novaNN = []
-    //let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
-    let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "04/02/2021", "v", null, 170, 1650)
-    //novaNN.push(td10)
-    novaNN.push(td20)
-    await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
+    // let novaNN = []
+    // let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
+    // let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "04/02/2021", "v", null, 170, 1650)
+    // novaNN.push(td10)
+    // novaNN.push(td20)
+    // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
     //=================================================================
+
+    //================================================================
+    //Teste de Leitura da API do TD:
+    const cottd = new CotacoesTesouroDireto()
+
+    const listaCot = await cottd.leApiTD()
+
+    console.log("Lista de Cotações TD:")
+    console.log(listaCot)
+
+    //================================================================
 }
 
-// TODO - TEM UM BUG NA HORA DE VENDER MAIS UNIDADES QUE EXISTEM NO ESTOQUE
 
 main()
 
