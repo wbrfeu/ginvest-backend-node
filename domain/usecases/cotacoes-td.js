@@ -42,9 +42,30 @@ class CotacoesTesouroDireto {
             return true
         }
 
-        if() {} // TODO - implementar regras de horário comercial
+        //Todos estes são o mesmo dia, verificar se é horário comercial
 
+        const horaLocal = agora.getHours()
+        const horaUltimaAtualiz = ultimaAtualizacao.getHours()
 
+        //Se é antes das 9h não precisa ler a API
+        if (horaLocal < 9) { return false }
+
+        // Se a hora local for >18h e a ultima atualização for >18h e dá false. NÃO Lê a API
+        if (horaLocal >= 18 && horaUltimaAtualiz >= 18) { return false }
+
+        // Após o início do horário comercial deve existir pelo menos uma leitura
+        if (horaLocal >= 9 && horaUltimaAtualiz < 9) { return true }
+
+        // Se a hora local for >18h e a ultima atualização for <18h e  dá true. Lê a API
+        if (horaLocal >= 18 && horaUltimaAtualiz < 18) { return true }
+
+        // Se está no horário comercial porém tem menos de 3h que fez a atualização da tabela.
+        // retorna false, não precisa ler a API
+        const tempoCorrido = (agora - ultimaAtualizacao) / (1000 * 60 * 60)
+        console.log(tempoCorrido)
+        if (horaLocal >= 9 && horaUltimaAtualiz >= 9 && tempoCorrido >= 2) { return true }
+
+        return false
     }
 }
 
