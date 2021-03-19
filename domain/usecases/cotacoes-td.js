@@ -26,9 +26,6 @@ class CotacoesTesouroDireto {
 
         const dao = new DaoCotacoesTD()
         const ultimaAtualizacao = await dao.leDataUltimAtualizacao()
-
-
-
     }
 
     eNecessarioLerApiTD(agora, ultimaAtualizacao) {
@@ -42,28 +39,33 @@ class CotacoesTesouroDireto {
             return true
         }
 
-        //Todos estes são o mesmo dia, verificar se é horário comercial
+        // Todos estes são o mesmo dia, verificar se é horário comercial
+
+        // Constantes Horário Comercial relativos ao Tesouro Direto
+        const horaInicioPregao = 9
+        const horaFimPregao = 18
+        const tempoMinAcessarApi = 2
 
         const horaLocal = agora.getHours()
         const horaUltimaAtualiz = ultimaAtualizacao.getHours()
 
-        //Se é antes das 9h não precisa ler a API
-        if (horaLocal < 9) { return false }
+        // Se é antes das 9h não precisa ler a API
+        if (horaLocal < horaInicioPregao) { return false }
 
-        // Se a hora local for >18h e a ultima atualização for >18h e dá false. NÃO Lê a API
-        if (horaLocal >= 18 && horaUltimaAtualiz >= 18) { return false }
+        // Se a hora local for >18h e a ultima atualização for >18h então dá false. NÃO Lê a API
+        if (horaLocal >= horaFimPregao && horaUltimaAtualiz >= horaFimPregao) { return false }
 
         // Após o início do horário comercial deve existir pelo menos uma leitura
-        if (horaLocal >= 9 && horaUltimaAtualiz < 9) { return true }
+        if (horaLocal >= horaInicioPregao && horaUltimaAtualiz < horaInicioPregao) { return true }
 
         // Se a hora local for >18h e a ultima atualização for <18h e  dá true. Lê a API
-        if (horaLocal >= 18 && horaUltimaAtualiz < 18) { return true }
+        if (horaLocal >= horaFimPregao && horaUltimaAtualiz < horaFimPregao) { return true }
 
         // Se está no horário comercial porém tem menos de 3h que fez a atualização da tabela.
         // retorna false, não precisa ler a API
         const tempoCorrido = (agora - ultimaAtualizacao) / (1000 * 60 * 60)
-        console.log(tempoCorrido)
-        if (horaLocal >= 9 && horaUltimaAtualiz >= 9 && tempoCorrido >= 2) { return true }
+        if (horaLocal >= horaInicioPregao && horaUltimaAtualiz >= horaInicioPregao
+            && tempoCorrido >= tempoMinAcessarApi) { return true }
 
         return false
     }

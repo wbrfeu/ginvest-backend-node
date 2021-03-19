@@ -12,24 +12,26 @@ function testaData(d1, d2) {
 }
 
 
-// testaData("6/3/2021", "1/2/2021")
-// testaData("7/3/2021", "1/2/2021")
-// testaData("6/3/2021", "6/3/2021")
-// testaData("10/3/2021", "11/3/2021")
+testaData("6/3/2021", "1/2/2021") // false - sabado
+testaData("7/3/2021", "1/2/2021") // false - domingo
+testaData("6/3/2021", "6/3/2021") // false - sabado, enbora esteja no mesmo dia
+testaData("10/3/2021", "11/3/2021") // true - dias diferentes
 
 let agora = null
 let ultatual = null
 
-// agora = new Date(2021, 0, 1, 6, 15)
-// ultatual = new Date(2021, 0, 1, 4, 15)
-// testaData(agora, ultatual)
+// false - mesmo dia porém antes das nove horas
+agora = new Date(2021, 0, 1, 6, 15)
+ultatual = new Date(2021, 0, 1, 4, 15)
+testaData(agora, ultatual)
 
+/*
 // true - OK
 agora = new Date(2021, 0, 1, 9, 15)
 ultatual = new Date(2021, 0, 1, 4, 15)
 testaData(agora, ultatual)
 
-// false - não passaram 3h
+// false - não passaram 2h
 agora = new Date(2021, 0, 1, 10, 15)
 ultatual = new Date(2021, 0, 1, 9, 15)
 testaData(agora, ultatual)
@@ -39,12 +41,12 @@ agora = new Date(2021, 0, 1, 9, 15)
 ultatual = new Date(2021, 0, 1, 8, 50)
 testaData(agora, ultatual)
 
-// false - não passou 3h
+// false - não passou 2h
 agora = new Date(2021, 0, 1, 9, 15)
 ultatual = new Date(2021, 0, 1, 9, 5)
 testaData(agora, ultatual)
 
-// true - passaram mais de 3h após a ultima leitura
+// true - passaram mais de 2h após a ultima leitura
 agora = new Date(2021, 0, 1, 13, 30)
 ultatual = new Date(2021, 0, 1, 10, 20)
 testaData(agora, ultatual)
@@ -63,3 +65,5 @@ testaData(agora, ultatual)
 agora = new Date(2021, 0, 1, 21, 0)
 ultatual = new Date(2021, 0, 1, 20, 0)
 testaData(agora, ultatual)
+
+*/
