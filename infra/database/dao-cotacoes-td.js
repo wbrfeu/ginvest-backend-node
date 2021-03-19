@@ -18,6 +18,12 @@ class DaoCotacoesTD {
         return result.rows[0].atualizado_em
 
     }
+
+    async salvaListaCotacaoTD() {}
+
+    async leCotacoes() {
+        return []
+    }
 }
 
 export { DaoCotacoesTD }

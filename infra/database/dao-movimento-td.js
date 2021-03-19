@@ -41,7 +41,6 @@ class DaoMovimentoTD {
         }
 
         return estoque
-
     }
 
     async salvaNovaNotaNegociacao(novaNN) {

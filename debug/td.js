@@ -18,20 +18,21 @@ async function main() {
     console.log(`Sistema ${process.env.APP_NAME} Inicializado`)
 
     // --------------------------------------------------------------------------------------
-    
-    //=================================================================
-    // Inicializa Objetos necessários ao teste
-    //let idUser = "M" // Simula qual usuário está logado
-    // let db = new DaoMovimentoTD()
-    // let td = new ProcessaTesouroDireto()
-    // td.setDatabase(db)
-    //=================================================================
 
     //=================================================================
     // Lê o Estoque Atual do usuário indicado:
-    // let r = await db.leEstoqueAtualTD(idUser)
+    // let idUser = "M" // Simula qual usuário está logado
+    // let dao = new DaoMovimentoTD()
+    // let r = await dao.leEstoqueAtualTD(idUser)
     // console.log(`Estoque antes de Processar NN: `)
     // console.log(r)
+    //=================================================================
+
+    //=================================================================
+    // Inicializa Objetos necessários ao teste "Insere o Estoque Inicial e Processa Nova Nota
+    // de Negociação" - os scripts seguintes
+    // let idUser = "M" // Simula qual usuário está logado
+    // let td = new ProcessaTesouroDireto()
     //=================================================================
 
     //=================================================================
@@ -52,7 +53,7 @@ async function main() {
     // Teste de Processar nova Nota de Negociação - depois vai ser pedido pelo Frontend
     // let novaNN = []
     // let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
-    // let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "04/02/2021", "v", null, 170, 1650)
+    // let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "v", null, 130, 1650)
     // novaNN.push(td10)
     // novaNN.push(td20)
     // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
@@ -61,12 +62,9 @@ async function main() {
     //================================================================
     //Teste de Leitura da API do TD:
     // const api = new ApiTesouroDireto()
-
     // const listaCot = await api.leApiTD()
-
     // console.log("Lista de Cotações TD:")
     // console.log(listaCot)
-
     //================================================================
 
     //================================================================
@@ -74,17 +72,12 @@ async function main() {
     // const dao = new DaoCotacoesTD()
     // const d = await dao.leDataUltimAtualizacao()
     // console.log(d)
-    
-
-
     //================================================================
 
     //================================================================
     //Teste de Leitura de Cotações do BD:
-    const cottd = new CotacoesTesouroDireto()
-    const listaCot = await cottd.leCotacoesAtuais()
-
-
+    // const cottd = new CotacoesTesouroDireto()
+    // const listaCot = await cottd.leCotacoesAtuais()
     //================================================================
 }
 

@@ -1,12 +1,13 @@
 import { v4 as uuidv4 } from 'uuid'
+import { DaoMovimentoTD } from '../../infra/database/dao-movimento-td.js'
 import { MovimentoTD } from '../entities/tesourodireto.js'
 
 class ProcessaTesouroDireto {
-    db = null
+    // db = null
 
-    setDatabase(dbInstance) {
-        this.db = dbInstance
-    }
+    // setDatabase(dbInstance) {
+    //     this.db = dbInstance
+    // }
 
     ordenaEstoquePorData(estoque) {
         const estoqueOrdenado = estoque.sort((a, b) => a.dataNegociacao - b.dataNegociacao)
@@ -14,14 +15,16 @@ class ProcessaTesouroDireto {
     }
 
     async processaESalvaNovaNotaNegociacao(novaNN, idUser) {
-        let nnProcessada = await this.processaNovaNotaNegociacao(novaNN, idUser)
-        await this.db.salvaNovaNotaNegociacao(nnProcessada)
+        const daoMov = new DaoMovimentoTD()
+        const nnProcessada = await this.processaNovaNotaNegociacao(novaNN, idUser)
+        await daoMov.salvaNovaNotaNegociacao(nnProcessada)
     }
 
     async processaNovaNotaNegociacao(novaNN, idUser) {
-        let estoqueAtual = await this.db.leEstoqueAtualTD(idUser)
-        let estoqueOrdenado = this.ordenaEstoquePorData(estoqueAtual)
-        let nnProcessada = []
+        const daoMov = new DaoMovimentoTD()
+        const estoqueAtual = await daoMov.leEstoqueAtualTD(idUser)
+        const estoqueOrdenado = this.ordenaEstoquePorData(estoqueAtual)
+        const nnProcessada = []
 
         for (let i = 0; i < novaNN.length; i++) {
             const itemNN = novaNN[i];
@@ -37,11 +40,11 @@ class ProcessaTesouroDireto {
                     const itemEst = estoqueOrdenado[j];
 
                     if (itemNN.codIsin === itemEst.codIsin && itemNN.idCorretora === itemEst.idCorretora && itemEst.dataNegociacao < itemNN.dataNegociacao) {
-                        let quantDisponivelEst = itemEst.quantidade
+                        const quantDisponivelEst = itemEst.quantidade
 
                         if (quantDisponivelEst >= saldoAVenderNN) {
                             // o item do estoque consegue consumir todo o saldo a vender
-                            let novoItem = new MovimentoTD(
+                            const novoItem = new MovimentoTD(
                                 itemNN.idUser,
                                 itemNN.numeroNotaNegociacao,
                                 itemNN.idCorretora,
@@ -62,7 +65,7 @@ class ProcessaTesouroDireto {
                         else {
                             // só dá para consumir parcialmente o saldo a vender
                             // e vai ter que passar para os próximos item do estoque
-                            let novoItem = new MovimentoTD(
+                            const novoItem = new MovimentoTD(
                                 itemNN.idUser,
                                 itemNN.numeroNotaNegociacao,
                                 itemNN.idCorretora,
@@ -95,6 +98,11 @@ class ProcessaTesouroDireto {
         }
 
         return nnProcessada
+    }
+
+    // Lê o Estoque e as Cotações Atuais e junta em uma única lista
+    async leEstoqueComCotacoesAtuais() {
+        return []
     }
 }
 
