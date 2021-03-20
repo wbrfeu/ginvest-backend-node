@@ -3,12 +3,6 @@ import { DaoMovimentoTD } from '../../infra/database/dao-movimento-td.js'
 import { MovimentoTD } from '../entities/tesourodireto.js'
 
 class ProcessaTesouroDireto {
-    // db = null
-
-    // setDatabase(dbInstance) {
-    //     this.db = dbInstance
-    // }
-
     ordenaEstoquePorData(estoque) {
         const estoqueOrdenado = estoque.sort((a, b) => a.dataNegociacao - b.dataNegociacao)
         return estoqueOrdenado

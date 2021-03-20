@@ -75,9 +75,16 @@ async function main() {
     //================================================================
 
     //================================================================
-    //Teste de Leitura de Cotações do BD:
+    // Teste de Leitura de Cotações do BD:
     // const cottd = new CotacoesTesouroDireto()
     // const listaCot = await cottd.leCotacoesAtuais()
+    //================================================================
+
+    //================================================================
+    // Teste de Uso da API tesouro e o BD tesouro
+    // const cot = new CotacoesTesouroDireto()
+    // const listaCotacoesTD = await cot.leCotacoesAtuais()
+    // console.log(listaCotacoesTD)
     //================================================================
 }
 

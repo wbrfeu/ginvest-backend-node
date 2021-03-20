@@ -12,18 +12,22 @@ function testaData(d1, d2) {
 }
 
 
-testaData("6/3/2021", "1/2/2021") // false - sabado
-testaData("7/3/2021", "1/2/2021") // false - domingo
-testaData("6/3/2021", "6/3/2021") // false - sabado, enbora esteja no mesmo dia
-testaData("10/3/2021", "11/3/2021") // true - dias diferentes
+// testaData("6/3/2021", null) // true - pois o banco está vazio
+// testaData("10/3/2021", "11/3/2021") // true - dias diferentes
+// testaData("6/3/2021", "7/3/2021") // true - embora ambos sejam sabado e domingo
+// testaData("7/3/2021", "7/3/2021") // false - domingo
+// testaData("6/3/2021", "6/3/2021") // false - sabado, enbora esteja no mesmo dia
+
+
+
 
 let agora = null
 let ultatual = null
 
 // false - mesmo dia porém antes das nove horas
-agora = new Date(2021, 0, 1, 6, 15)
-ultatual = new Date(2021, 0, 1, 4, 15)
-testaData(agora, ultatual)
+// agora = new Date(2021, 0, 1, 6, 15)
+// ultatual = new Date(2021, 0, 1, 4, 15)
+// testaData(agora, ultatual)
 
 /*
 // true - OK

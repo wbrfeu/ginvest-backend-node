@@ -18,19 +18,34 @@ Objeto que fornece as cotações Atuais do TD
 */
 
 import { ApiTesouroDireto } from "../../infra/apis-externas/api-td.js"
+import { DaoCotacoesTD } from "../../infra/database/dao-cotacoes-td.js"
 
 class CotacoesTesouroDireto {
 
+    // Vai ser chamado pelo usecases - APAGAR
     async leCotacoesAtuais() {
         const agora = new Date()
 
         const dao = new DaoCotacoesTD()
         const ultimaAtualizacao = await dao.leDataUltimAtualizacao()
+
+        let listaCotacoesTD = null
+
+        if (this.eNecessarioLerApiTD(agora, ultimaAtualizacao) === true) {
+            const api = new ApiTesouroDireto()
+            listaCotacoesTD = await api.leApiTD()
+            await dao.apagaCotacoes()
+            await dao.salvaListaCotacoes(listaCotacoesTD)
+            return listaCotacoesTD
+        }
+
+        listaCotacoesTD = await dao.leCotacoes()
+        return listaCotacoesTD
     }
 
     eNecessarioLerApiTD(agora, ultimaAtualizacao) {
-        // Se o agora é sábado ou domingo não precisa ler a API
-        if (agora.getDay() === 0 || agora.getDay() === 6) { return false }
+        // Se o banco está vazio precisa ler a API
+        if(ultimaAtualizacao === null) { return true }
 
         // Se o dia é diferente então tem que ler a API do TD
         if (agora.getFullYear() != ultimaAtualizacao.getFullYear() ||
@@ -38,6 +53,9 @@ class CotacoesTesouroDireto {
             agora.getDate() != ultimaAtualizacao.getDate()) {
             return true
         }
+
+        // Se o agora é sábado ou domingo não precisa ler a API
+        if (agora.getDay() === 0 || agora.getDay() === 6) { return false }
 
         // Todos estes são o mesmo dia, verificar se é horário comercial
 

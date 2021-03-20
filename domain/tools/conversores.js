@@ -6,6 +6,8 @@ function stringToDate(dateString) {
 
 // Garante que um objeto é do tipo Date e, caso não for, converte para Date
 function convertToDate(obj) {
+    if (obj === null) { return null }
+
     if (obj instanceof Date) {
         return obj
     }
