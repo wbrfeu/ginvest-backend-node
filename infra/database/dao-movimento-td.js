@@ -24,6 +24,9 @@ class DaoMovimentoTD {
 
         let estoque = []
 
+        // Converte o resultado da leitura do Banco de dados Movimento,
+        // em um array de elementos do tipo EstoqueTD.
+
         for (let i = 0; i < result.rows.length; i++) {
             let r = result.rows[i]
 

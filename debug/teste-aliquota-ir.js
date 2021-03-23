@@ -1,5 +1,6 @@
 import { aliquotaIR } from '../domain/tools/aliquota-ir.js'
 import { convertToDate } from '../domain/tools/conversores.js'
+import { diferencaEmDias } from '../domain/tools/datas.js'
 
 // Teste com Diferença entre datas, resultado em dias - primeiro if
 // const dc1 = convertToDate("01/03/2021")
@@ -20,7 +21,10 @@ import { convertToDate } from '../domain/tools/conversores.js'
 // console.log(dif3)
 
 // Teste com Diferença entre datas, resultado em dias - quarto if
-const dc4 = convertToDate("01/01/2019")
-const dv4 = convertToDate("22/02/2021")
-const dif4 = aliquotaIR(dv4, dc4)
-console.log(dif4)
+// const dc4 = convertToDate("01/01/2019")
+// const dv4 = convertToDate("22/02/2021")
+// const dif4 = aliquotaIR(dv4, dc4)
+// console.log(dif4)
+
+const dif5 = diferencaEmDias("20/03/2021", new Date()) 
+console.log(dif5)

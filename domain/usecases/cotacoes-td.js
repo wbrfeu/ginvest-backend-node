@@ -81,9 +81,9 @@ class CotacoesTesouroDireto {
 
         // Se está no horário comercial porém tem menos de 3h que fez a atualização da tabela.
         // retorna false, não precisa ler a API
-        const tempoCorrido = (agora - ultimaAtualizacao) / (1000 * 60 * 60)
+        const horasCorridas = (agora - ultimaAtualizacao) / (1000 * 60 * 60)
         if (horaLocal >= horaInicioPregao && horaUltimaAtualiz >= horaInicioPregao
-            && tempoCorrido >= tempoMinAcessarApi) { return true }
+            && horasCorridas >= tempoMinAcessarApi) { return true }
 
         return false
     }

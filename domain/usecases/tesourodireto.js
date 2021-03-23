@@ -99,7 +99,7 @@ class ProcessaTesouroDireto {
     async leEstoqueComCotacoesAtuais(idUser) {
         const daoMov = new DaoMovimentoTD()
         const estoqueAtual = await daoMov.leEstoqueAtualTD(idUser)
-        
+
         const cottd = new CotacoesTesouroDireto()
         const cotacoes = await cottd.leCotacoesAtuais()
 
@@ -109,12 +109,13 @@ class ProcessaTesouroDireto {
             for (let j = 0; j < cotacoes.length; j++) {
                 const cot = cotacoes[j];
 
-                if(est.codIsin === cot.codIsin) {
+                if (est.codIsin === cot.codIsin) {
                     est.valorUnitarioAtualVenda = cot.valorUnitarioVenda
                     est.nome = cot.nome
+                    est.calculaResultado()
                     break
-                }                
-            }            
+                }
+            }
         }
 
         return estoqueAtual

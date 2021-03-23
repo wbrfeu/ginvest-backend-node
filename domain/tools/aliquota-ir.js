@@ -1,16 +1,13 @@
-import { convertToDate } from './conversores.js'
-
-// TODO - Ver alíquotas e Períodos corretos na legislação
+import { diferencaEmDias } from "./datas.js"
 
 function aliquotaIR(dataCompra, dataVenda) {
-    dataCompra = convertToDate(dataCompra)
-    dataVenda = convertToDate(dataVenda)
-    const diasCorridos = Math.abs(dataVenda - dataCompra) / (1000 * 60 * 60 * 24)
+    const diasCorridos = diferencaEmDias(dataCompra, dataVenda)
 
-    if(diasCorridos <= 180) { return 0.225 }
-    if(diasCorridos > 180 && diasCorridos <= 365) { return 0.2 }
-    if(diasCorridos > 365 && diasCorridos <= 720) { return 0.175 }
-    if(diasCorridos > 720) { return 0.15 }
+    // TODO - Ver alíquotas e Períodos corretos na legislação
+    if (diasCorridos <= 180) { return 0.225 }
+    if (diasCorridos > 180 && diasCorridos <= 360) { return 0.2 }
+    if (diasCorridos > 360 && diasCorridos <= 720) { return 0.175 }
+    if (diasCorridos > 720) { return 0.15 }
 }
 
 export { aliquotaIR }

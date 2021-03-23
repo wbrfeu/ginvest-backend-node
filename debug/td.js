@@ -37,11 +37,13 @@ async function main() {
 
     //=================================================================
     // Insere o Estoque Inicial:
+    // let idUser = "M" // Simula qual usuário está logado
+    // let td = new ProcessaTesouroDireto()
     // const novaNN = []
-    // const td1 = new MovimentoTD("W", 1, "Easy", "BRSTNCLF1RC4", "1/2/2021", "c", null, 70, 700)
-    // const td2 = new MovimentoTD("W", 2, "Easy", "BRSTNCLF1RC4", "2/2/2021", "c", null, 80, 880)
-    // const td3 = new MovimentoTD("W", 3, "Clear", "BRSTNCLTN7U7", "3/2/2021", "c", null, 90, 1080)
-    // const td4 = new MovimentoTD("W", 4, "Easy", "BRSTNCLF1RC4", "4/2/2021", "c", null, 100, 1300)
+    // const td1 = new MovimentoTD("M", 1, "Easy", "BRSTNCLF1RC4", "1/2/2021", "c", null, 7, 70000)
+    // const td2 = new MovimentoTD("M", 2, "Easy", "BRSTNCLF1RC4", "2/2/2021", "c", null, 8, 80000)
+    // const td3 = new MovimentoTD("M", 3, "Clear", "BRSTNCLTN7U7", "3/2/2021", "c", null, 9, 5400)
+    // const td4 = new MovimentoTD("M", 4, "Easy", "BRSTNCLF1RC4", "4/2/2021", "c", null, 10, 100000)
     // novaNN.push(td4)
     // novaNN.push(td1)
     // novaNN.push(td3)
@@ -51,6 +53,8 @@ async function main() {
 
     //=================================================================
     // Teste de Processar nova Nota de Negociação - depois vai ser pedido pelo Frontend
+    // let idUser = "M" // Simula qual usuário está logado
+    // let td = new ProcessaTesouroDireto()
     // let novaNN = []
     // let td10 = new MovimentoTD("M", 10, "Easy", "BRSTNCLTN7N2", "10/02/2021", "C", null, 100, 1400)
     // let td20 = new MovimentoTD("M", 10, "Easy", "BRSTNCLF1RC4", "10/02/2021", "v", null, 130, 1650)
@@ -89,7 +93,7 @@ async function main() {
 
     //================================================================
     // Teste de Junção Estoque Atual com Cotações Atuais
-    const idUser = "M" // Simula qual usuário está logado
+    const idUser = "W" // Simula qual usuário está logado
     const td = new ProcessaTesouroDireto()
     const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
     console.log(estoque)
