@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import { DaoMovimentoTD } from '../../infra/database/dao-movimento-td.js'
 import { MovimentoTD } from '../entities/tesourodireto.js'
+import { CotacoesTesouroDireto } from './cotacoes-td.js'
 
 class ProcessaTesouroDireto {
     ordenaEstoquePorData(estoque) {
@@ -95,8 +96,28 @@ class ProcessaTesouroDireto {
     }
 
     // Lê o Estoque e as Cotações Atuais e junta em uma única lista
-    async leEstoqueComCotacoesAtuais() {
-        return []
+    async leEstoqueComCotacoesAtuais(idUser) {
+        const daoMov = new DaoMovimentoTD()
+        const estoqueAtual = await daoMov.leEstoqueAtualTD(idUser)
+        
+        const cottd = new CotacoesTesouroDireto()
+        const cotacoes = await cottd.leCotacoesAtuais()
+
+        for (let i = 0; i < estoqueAtual.length; i++) {
+            const est = estoqueAtual[i];
+
+            for (let j = 0; j < cotacoes.length; j++) {
+                const cot = cotacoes[j];
+
+                if(est.codIsin === cot.codIsin) {
+                    est.valorUnitarioAtualVenda = cot.valorUnitarioVenda
+                    est.nome = cot.nome
+                    break
+                }                
+            }            
+        }
+
+        return estoqueAtual
     }
 }
 

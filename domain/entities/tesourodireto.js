@@ -26,6 +26,8 @@ class EstoqueTD {
         this.idLote = lote
         this.quantidade = quant
         this.valorUnitario = valorunit
+        this.valorUnitarioAtualVenda = null
+        this.nome = null
     }
 }
 

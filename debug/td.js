@@ -38,10 +38,10 @@ async function main() {
     //=================================================================
     // Insere o Estoque Inicial:
     // const novaNN = []
-    // const td1 = new MovimentoTD("M", 1, "Easy", "LFT25", "1/2/2021", "c", null, 70, 700)
-    // const td2 = new MovimentoTD("W", 2, "Easy", "LFT25", "2/2/2021", "c", null, 80, 880)
-    // const td3 = new MovimentoTD("M", 3, "Clear", "LTN35", "3/2/2021", "c", null, 90, 1080)
-    // const td4 = new MovimentoTD("M", 4, "Easy", "LFT25", "4/2/2021", "c", null, 100, 1300)
+    // const td1 = new MovimentoTD("W", 1, "Easy", "BRSTNCLF1RC4", "1/2/2021", "c", null, 70, 700)
+    // const td2 = new MovimentoTD("W", 2, "Easy", "BRSTNCLF1RC4", "2/2/2021", "c", null, 80, 880)
+    // const td3 = new MovimentoTD("W", 3, "Clear", "BRSTNCLTN7U7", "3/2/2021", "c", null, 90, 1080)
+    // const td4 = new MovimentoTD("W", 4, "Easy", "BRSTNCLF1RC4", "4/2/2021", "c", null, 100, 1300)
     // novaNN.push(td4)
     // novaNN.push(td1)
     // novaNN.push(td3)
@@ -52,8 +52,8 @@ async function main() {
     //=================================================================
     // Teste de Processar nova Nota de Negociação - depois vai ser pedido pelo Frontend
     // let novaNN = []
-    // let td10 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "C", null, 100, 1400)
-    // let td20 = new MovimentoTD("M", 10, "Easy", "LFT25", "10/02/2021", "v", null, 130, 1650)
+    // let td10 = new MovimentoTD("M", 10, "Easy", "BRSTNCLTN7N2", "10/02/2021", "C", null, 100, 1400)
+    // let td20 = new MovimentoTD("M", 10, "Easy", "BRSTNCLF1RC4", "10/02/2021", "v", null, 130, 1650)
     // novaNN.push(td10)
     // novaNN.push(td20)
     // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
@@ -85,6 +85,15 @@ async function main() {
     // const cot = new CotacoesTesouroDireto()
     // const listaCotacoesTD = await cot.leCotacoesAtuais()
     // console.log(listaCotacoesTD)
+    //================================================================
+
+    //================================================================
+    // Teste de Junção Estoque Atual com Cotações Atuais
+    const idUser = "M" // Simula qual usuário está logado
+    const td = new ProcessaTesouroDireto()
+    const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
+    console.log(estoque)
+    
     //================================================================
 }
 
