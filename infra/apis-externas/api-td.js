@@ -1,6 +1,7 @@
 import axios from 'axios'
 import https from 'https'
 import { CotacaoTD } from '../../domain/entities/tesourodireto.js'
+import { logger } from '../logger/logger.js'
 
 const URL_TD = 'https://www.tesourodireto.com.br/json/br/com/b3/tesourodireto/service/api/treasurybondsinfo.json'
 
@@ -26,7 +27,7 @@ class ApiTesouroDireto {
             return listaCotacoesTD
 
         } catch (e) {
-            console.error(`Erro ao Ler a API do site TD: ${e}`)
+            logger.error(`Erro ao Ler a API do site TD: ${e}`)
         }
     }
 }

@@ -1,4 +1,5 @@
 import { CotacaoTD } from '../../domain/entities/tesourodireto.js'
+import { logger } from '../logger/logger.js'
 import { dbClient } from './init-database.js'
 
 class DaoCotacoesTD {
@@ -10,7 +11,7 @@ class DaoCotacoesTD {
         try {
             result = await dbClient.query(sql)
         } catch (e) {
-            console.log(`Erro ao Ler a Data da última Atualização da Tab Cotações_TD: ${e}`)
+            logger.error(`Erro ao Ler a Data da última Atualização da Tab Cotações_TD: ${e}`)
             return null
         }
 
@@ -27,7 +28,7 @@ class DaoCotacoesTD {
         try {
             await dbClient.query(sql)
         } catch (e) {
-            console.log(`Erro ao Apagar as Cotações da Tab Cotações_TD: ${e}`)
+            logger.error(`Erro ao Apagar as Cotações da Tab Cotações_TD: ${e}`)
         }
     }
 
@@ -57,7 +58,7 @@ class DaoCotacoesTD {
         try {
             result = await dbClient.query(sql)
         } catch (e) {
-            console.log(`Erro ao Ler as cotações da Tab Cotações_TD: ${e}`)
+            logger.error(`Erro ao Ler as cotações da Tab Cotações_TD: ${e}`)
             return null
         }
 

@@ -32,6 +32,7 @@ class CotacoesTesouroDireto {
         let listaCotacoesTD = null
 
         if (this.eNecessarioLerApiTD(agora, ultimaAtualizacao) === true) {
+            // TODO - Tratar o erro caso a API falhe
             const api = new ApiTesouroDireto()
             listaCotacoesTD = await api.leApiTD()
             await dao.apagaCotacoes()
@@ -39,6 +40,7 @@ class CotacoesTesouroDireto {
             return listaCotacoesTD
         }
 
+        // TODO - Tratar o erro caso o banco falhe
         listaCotacoesTD = await dao.leCotacoes()
         return listaCotacoesTD
     }

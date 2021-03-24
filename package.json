@@ -15,7 +15,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "dateformat": "^4.5.1",
     "dotenv": "^8.2.0",
+    "logger": "0.0.1",
     "pg": "^8.5.1",
     "uuid": "^8.3.2"
   }

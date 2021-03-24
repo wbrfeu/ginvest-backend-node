@@ -1,4 +1,5 @@
 import pg from 'pg'
+import { logger } from '../logger/logger'
 
 var dbClient = null
 
@@ -17,8 +18,8 @@ async function inicializaDatabase() {
     try {
         await dbClient.connect()    
     } catch (error) {
-        let msg = "Erro de Inicialização do Banco de Dados - " + error
-        console.error(msg)
+        let msg = "Erro de Inicialização do Banco de Dados: " + error
+        logger.error(msg)
         throw msg
     }
 }

@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { DaoMovimentoTD } from '../../infra/database/dao-movimento-td.js'
+import { logger } from '../../infra/logger/logger.js'
 import { MovimentoTD } from '../entities/tesourodireto.js'
 import { CotacoesTesouroDireto } from './cotacoes-td.js'
 
@@ -86,7 +87,7 @@ class ProcessaTesouroDireto {
                 }
 
                 if (saldoAVenderNN > 0) {
-                    console.log(`Saldo insuficiente para venda do título ${itemNN.codIsin}`)
+                    logger.error(`Saldo insuficiente para venda do título ${itemNN.codIsin}. Nota não processada!`)
                     return []
                 }
             }

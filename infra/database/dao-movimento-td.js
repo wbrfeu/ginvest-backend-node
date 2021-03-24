@@ -1,5 +1,6 @@
 import { dbClient } from './init-database.js'
 import { EstoqueTD } from '../../domain/entities/tesourodireto.js'
+import { logger } from '../logger/logger.js'
 
 class DaoMovimentoTD {
 
@@ -18,7 +19,7 @@ class DaoMovimentoTD {
         try {
             result = await dbClient.query(sql, [idUser])
         } catch (e) {
-            console.log(`Erro ao Ler o Estoque TD: ${e}`)
+            logger.error(`Erro ao Ler o Estoque TD: ${e}`)
             return null
         }
 
