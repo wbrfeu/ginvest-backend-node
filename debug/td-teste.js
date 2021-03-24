@@ -24,7 +24,7 @@ async function main() {
     // let idUser = "M" // Simula qual usuário está logado
     // let dao = new DaoMovimentoTD()
     // let r = await dao.leEstoqueAtualTD(idUser)
-    // console.log(`Estoque antes de Processar NN: `)
+    // console.log(`Estoque Atual: `)
     // console.log(r)
     //=================================================================
 
@@ -44,6 +44,19 @@ async function main() {
     // const td2 = new MovimentoTD("M", 2, "Easy", "BRSTNCLF1RC4", "2/2/2021", "c", null, 8, 80000)
     // const td3 = new MovimentoTD("M", 3, "Clear", "BRSTNCLTN7U7", "3/2/2021", "c", null, 9, 5400)
     // const td4 = new MovimentoTD("M", 4, "Easy", "BRSTNCLF1RC4", "4/2/2021", "c", null, 10, 100000)
+    // novaNN.push(td4)
+    // novaNN.push(td1)
+    // novaNN.push(td3)
+    // novaNN.push(td2)
+    // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
+    //---------------------
+    // let idUser = "W" // Simula qual usuário está logado
+    // let td = new ProcessaTesouroDireto()
+    // const novaNN = []
+    // const td1 = new MovimentoTD("W", 1, "Easy", "BRSTNCLF1RC4", "1/2/2021", "c", null, 7, 70000)
+    // const td2 = new MovimentoTD("W", 2, "Easy", "BRSTNCLF1RC4", "2/2/2021", "c", null, 8, 80000)
+    // const td3 = new MovimentoTD("W", 3, "Clear", "BRSTNCLTN7U7", "3/2/2021", "c", null, 9, 5400)
+    // const td4 = new MovimentoTD("W", 4, "Easy", "BRSTNCLF1RC4", "4/2/2021", "c", null, 10, 100000)
     // novaNN.push(td4)
     // novaNN.push(td1)
     // novaNN.push(td3)
@@ -93,11 +106,11 @@ async function main() {
 
     //================================================================
     // Teste de Junção Estoque Atual com Cotações Atuais
-    // const idUser = "W" // Simula qual usuário está logado
+    // const idUser = "M" // Simula qual usuário está logado
     // const td = new ProcessaTesouroDireto()
     // const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
-    // console.log(estoque)
-    
+    // console.log("=============================================")
+    // console.log(estoque)    
     //================================================================
 }
 

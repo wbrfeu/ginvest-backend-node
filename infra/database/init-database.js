@@ -1,5 +1,5 @@
 import pg from 'pg'
-import { logger } from '../logger/logger'
+import { logger } from '../logger/logger.js'
 
 var dbClient = null
 

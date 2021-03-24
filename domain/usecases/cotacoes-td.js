@@ -32,22 +32,23 @@ class CotacoesTesouroDireto {
         let listaCotacoesTD = null
 
         if (this.eNecessarioLerApiTD(agora, ultimaAtualizacao) === true) {
-            // TODO - Tratar o erro caso a API falhe
             const api = new ApiTesouroDireto()
             listaCotacoesTD = await api.leApiTD()
-            await dao.apagaCotacoes()
-            await dao.salvaListaCotacoes(listaCotacoesTD)
-            return listaCotacoesTD
+
+            if (listaCotacoesTD != null && listaCotacoesTD.length > 0) {
+                await dao.apagaCotacoes()
+                await dao.salvaListaCotacoes(listaCotacoesTD)
+                return listaCotacoesTD
+            }
         }
 
-        // TODO - Tratar o erro caso o banco falhe
         listaCotacoesTD = await dao.leCotacoes()
         return listaCotacoesTD
     }
 
     eNecessarioLerApiTD(agora, ultimaAtualizacao) {
         // Se o banco está vazio precisa ler a API
-        if(ultimaAtualizacao === null) { return true }
+        if (ultimaAtualizacao === null) { return true }
 
         // Se o dia é diferente então tem que ler a API do TD
         if (agora.getFullYear() != ultimaAtualizacao.getFullYear() ||

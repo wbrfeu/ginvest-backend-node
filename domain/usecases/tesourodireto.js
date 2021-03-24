@@ -106,8 +106,12 @@ class ProcessaTesouroDireto {
         const daoMov = new DaoMovimentoTD()
         const estoqueAtual = await daoMov.leEstoqueAtualTD(idUser)
 
+        if (estoqueAtual === null || estoqueAtual.length === 0) { return null }
+
         const cottd = new CotacoesTesouroDireto()
         const cotacoes = await cottd.leCotacoesAtuais()
+
+        if (cotacoes === null) { return estoqueAtual }
 
         for (let i = 0; i < estoqueAtual.length; i++) {
             const est = estoqueAtual[i];

@@ -28,6 +28,7 @@ class ApiTesouroDireto {
 
         } catch (e) {
             logger.error(`Erro ao Ler a API do site TD: ${e}`)
+            return null
         }
     }
 }
