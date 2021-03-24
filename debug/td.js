@@ -56,8 +56,8 @@ async function main() {
     // let idUser = "M" // Simula qual usuário está logado
     // let td = new ProcessaTesouroDireto()
     // let novaNN = []
-    // let td10 = new MovimentoTD("M", 10, "Easy", "BRSTNCLTN7N2", "10/02/2021", "C", null, 100, 1400)
-    // let td20 = new MovimentoTD("M", 10, "Easy", "BRSTNCLF1RC4", "10/02/2021", "v", null, 130, 1650)
+    // let td10 = new MovimentoTD("M", 10, "Easy", "BRSTNCLTN7N2", "10/02/2021", "C", null, 1, 1*720)
+    // let td20 = new MovimentoTD("M", 10, "Easy", "BRSTNCLF1RC4", "10/02/2021", "v", null, 25, 25*11000)
     // novaNN.push(td10)
     // novaNN.push(td20)
     // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
@@ -93,14 +93,13 @@ async function main() {
 
     //================================================================
     // Teste de Junção Estoque Atual com Cotações Atuais
-    const idUser = "W" // Simula qual usuário está logado
-    const td = new ProcessaTesouroDireto()
-    const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
-    console.log(estoque)
+    // const idUser = "W" // Simula qual usuário está logado
+    // const td = new ProcessaTesouroDireto()
+    // const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
+    // console.log(estoque)
     
     //================================================================
 }
-
 
 main()
 

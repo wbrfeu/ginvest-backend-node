@@ -19,5 +19,18 @@ CREATE TABLE movimento_td (
 	valor_liquido float8,
 	valor_unitario float8,
 	data_compra_corresp date,
-	valor_unitario_compra_corresp float8
+	valor_unitario_compra_corresp float8,
+	result_bruto float8,
+	result_bruto_percent float8,
+	ir float8,
+	result_liq float8,
+	result_liq_percent float8,
+	rent_liq_mensal_corresp float8
+);
+
+
+CREATE TABLE titulos_td (
+	cod_isin text,
+	nome text,
+	data_vencimento date
 );

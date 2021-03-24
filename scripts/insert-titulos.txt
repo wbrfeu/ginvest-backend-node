@@ -1,0 +1,57 @@
+-- Insere todos os Títulos TD:
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Selic 2023','BRSTNCLF1R82','2023-03-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Selic 2024', 'BRSTNCLF0008', '2024-09-01');
+  
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Selic 2025','BRSTNCLF1RC4','2025-03-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Selic 2027','BRSTNCLF1RG5','2027-03-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado 2022','BRSTNCLTN7K8', '2022-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado 2023','BRSTNCLTN7D3', '2023-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado com Juros Semestrais 2023','BRSTNCNTF147', '2023-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado 2024','BRSTNCLTN7W3', '2024-07-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado 2025','BRSTNCLTN7N2', '2025-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado com Juros Semestrais 2025','BRSTNCNTF170','2025-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado 2026','BRSTNCLTN7U7', '2026-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado com Juros Semestrais 2027','BRSTNCNTF1P8', '2027-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado com Juros Semestrais 2029','BRSTNCNTF1Q6', '2029-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro Prefixado com Juros Semestrais 2031','BRSTNCNTF204', '2031-01-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ 2024','BRSTNCNTB0K5','2024-08-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ com Juros Semestrais 2024','BRSTNCNTB096', '2024-08-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ 2026','BRSTNCNTB4W2','2026-08-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ com Juros Semestrais 2026','BRSTNCNTB4U6', '2026-08-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ com Juros Semestrais 2030','BRSTNCNTB3B8', '2030-08-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ 2035','BRSTNCNTB3E2','2035-05-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ com Juros Semestrais 2035','BRSTNCNTB0O7', '2035-05-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ com Juros Semestrais 2040','BRSTNCNTB3C6', '2040-08-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ 2045','BRSTNCNTB2U0','2045-05-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ com Juros Semestrais 2045','BRSTNCNTB0A6', '2045-05-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ com Juros Semestrais 2050','BRSTNCNTB3D4', '2050-08-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IPCA+ com Juros Semestrais 2055','BRSTNCNTB4Q4', '2055-05-15');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IGPM+ com Juros Semestrais 2021','BRSTNCNTC0M0', '2021-04-01');
+
+INSERT INTO titulos_td (nome, cod_isin, data_vencimento) VALUES ('Tesouro IGPM+ com Juros Semestrais 2031','BRSTNCNTC0K4', '2031-01-01');

@@ -92,6 +92,11 @@ class ProcessaTesouroDireto {
             }
         }
 
+        // Faz o cálculo de Resultados no caso das Vendas
+        nnProcessada.forEach(itemNN => {
+            itemNN.calculaResultado()
+        });
+
         return nnProcessada
     }
 

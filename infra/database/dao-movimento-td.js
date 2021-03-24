@@ -49,8 +49,9 @@ class DaoMovimentoTD {
     async salvaNovaNotaNegociacao(novaNN) {
         const sql = `INSERT INTO movimento_td
             (id_user, numero_nota_negociacao, id_corretora, cod_isin, data_negociacao, indicador_cv, 
-            id_lote, quantidade, valor_liquido, valor_unitario, data_compra_corresp, valor_unitario_compra_corresp)
-            VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`
+            id_lote, quantidade, valor_liquido, valor_unitario, data_compra_corresp, valor_unitario_compra_corresp, 
+            result_bruto, result_bruto_percent, ir, result_liq, result_liq_percent, rent_liq_mensal_corresp)
+            VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18);`
 
         for (let i = 0; i < novaNN.length; i++) {
             const nn = novaNN[i]
@@ -67,7 +68,13 @@ class DaoMovimentoTD {
                 nn.valorLiquido,
                 nn.valorUnitario,
                 nn.dataCompraCorresp,
-                nn.valorUnitarioCompraCorresp
+                nn.valorUnitarioCompraCorresp,
+                nn.resultadoBruto,
+                nn.resultadoBrutoPercent,
+                nn.ir,
+                nn.resultadoLiquido,
+                nn.resultadoLiquidoPercent,
+                nn.rentabLiqMensalCorresp
             ]
 
             await dbClient.query(sql, values)
