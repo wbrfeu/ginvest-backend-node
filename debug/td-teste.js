@@ -98,19 +98,24 @@ async function main() {
     //================================================================
 
     //================================================================
-    // Teste de Uso da API tesouro e o BD tesouro
+    // Teste de Uso da API tesouro e o BD tesouro e da Cache
     // const cot = new CotacoesTesouroDireto()
-    // const listaCotacoesTD = await cot.leCotacoesAtuais()
+    // console.log("_________________ Primeira Leitura")
+    // let listaCotacoesTD = await cot.leCotacoesAtuais()
     // console.log(listaCotacoesTD)
+    // console.log("=======================================================")
+    // console.log("_________________ Segunda Leitura da cache")
+    // listaCotacoesTD = await cot.leCotacoesAtuais()
+    // console.log(listaCotacoesTD)    
     //================================================================
 
     //================================================================
     // Teste de Junção Estoque Atual com Cotações Atuais
-    // const idUser = "M" // Simula qual usuário está logado
-    // const td = new ProcessaTesouroDireto()
-    // const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
-    // console.log("=============================================")
-    // console.log(estoque)    
+    const idUser = "M" // Simula qual usuário está logado
+    const td = new ProcessaTesouroDireto()
+    const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
+    console.log("=============================================")
+    console.log(estoque)    
     //================================================================
 }
 
