@@ -111,11 +111,11 @@ async function main() {
 
     //================================================================
     // Teste de Junção Estoque Atual com Cotações Atuais
-    const idUser = "M" // Simula qual usuário está logado
-    const td = new ProcessaTesouroDireto()
-    const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
-    console.log("=============================================")
-    console.log(estoque)    
+    // const idUser = "M" // Simula qual usuário está logado
+    // const td = new ProcessaTesouroDireto()
+    // const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
+    // console.log("=============================================")
+    // console.log(estoque)    
     //================================================================
 }
 

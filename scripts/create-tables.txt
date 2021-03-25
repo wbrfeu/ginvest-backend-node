@@ -3,7 +3,7 @@ CREATE TABLE cotacoes_td (
 	cod_isin text,
 	val_unit_venda float8,
 	data_vencimento date,
-	atualizado_em date
+	atualizado_em timestamp
 );
 
 
