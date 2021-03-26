@@ -5,41 +5,26 @@ import { MovimentoTD } from '../domain/entities/tesourodireto.js'
 import { CotacoesTesouroDireto } from '../domain/usecases/cotacoes-td.js'
 import { ApiTesouroDireto } from '../infra/apis-externas/api-td.js'
 import { DaoCotacoesTD } from '../infra/database/dao-cotacoes-td.js'
+import { logger } from '../infra/logger/logger.js'
 
 
 async function main() {
     try {
         await inicializaInfra()
     } catch (e) {
-        console.error(`Erro ao Inicializar Sistema - ${e}`)
+        logger.error(`Erro ao Inicializar Sistema - ${e}`)
         return
     }
 
-    console.log(`Sistema ${process.env.APP_NAME} Inicializado`)
+    logger.info(`Sistema ${process.env.APP_NAME} Inicializado`)
 
     // --------------------------------------------------------------------------------------
 
     //=================================================================
-    // Lê o Estoque Atual do usuário indicado:
-    // let idUser = "M" // Simula qual usuário está logado
-    // let dao = new DaoMovimentoTD()
-    // let r = await dao.leEstoqueAtualTD(idUser)
-    // console.log(`Estoque Atual: `)
-    // console.log(r)
-    //=================================================================
-
-    //=================================================================
-    // Inicializa Objetos necessários ao teste "Insere o Estoque Inicial e Processa Nova Nota
-    // de Negociação" - os scripts seguintes
+    // Insere o  ESTOQUE INICIAL :
     // let idUser = "M" // Simula qual usuário está logado
     // let td = new ProcessaTesouroDireto()
-    //=================================================================
-
-    //=================================================================
-    // Insere o Estoque Inicial:
-    // let idUser = "M" // Simula qual usuário está logado
-    // let td = new ProcessaTesouroDireto()
-    // const novaNN = []
+    // let novaNN = []
     // const td1 = new MovimentoTD("M", 1, "Easy", "BRSTNCLF1RC4", "1/2/2021", "c", null, 7, 70000)
     // const td2 = new MovimentoTD("M", 2, "Easy", "BRSTNCLF1RC4", "2/2/2021", "c", null, 8, 80000)
     // const td3 = new MovimentoTD("M", 3, "Clear", "BRSTNCLTN7U7", "3/2/2021", "c", null, 9, 5400)
@@ -48,24 +33,34 @@ async function main() {
     // novaNN.push(td1)
     // novaNN.push(td3)
     // novaNN.push(td2)
+    // console.log(novaNN.length)
     // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
-    //---------------------
-    // let idUser = "W" // Simula qual usuário está logado
-    // let td = new ProcessaTesouroDireto()
-    // const novaNN = []
-    // const td1 = new MovimentoTD("W", 1, "Easy", "BRSTNCLF1RC4", "1/2/2021", "c", null, 7, 70000)
-    // const td2 = new MovimentoTD("W", 2, "Easy", "BRSTNCLF1RC4", "2/2/2021", "c", null, 8, 80000)
-    // const td3 = new MovimentoTD("W", 3, "Clear", "BRSTNCLTN7U7", "3/2/2021", "c", null, 9, 5400)
-    // const td4 = new MovimentoTD("W", 4, "Easy", "BRSTNCLF1RC4", "4/2/2021", "c", null, 10, 100000)
-    // novaNN.push(td4)
-    // novaNN.push(td1)
-    // novaNN.push(td3)
-    // novaNN.push(td2)
+    // // ---------------------
+    // idUser = "W" // Simula qual usuário está logado
+    // novaNN = []
+    // const td5 = new MovimentoTD("W", 1, "Easy", "BRSTNCLF1RC4", "1/2/2021", "c", null, 7, 70000)
+    // const td6 = new MovimentoTD("W", 2, "Easy", "BRSTNCLF1RC4", "2/2/2021", "c", null, 8, 80000)
+    // const td7 = new MovimentoTD("W", 3, "Clear", "BRSTNCLTN7U7", "3/2/2021", "c", null, 9, 5400)
+    // const td8 = new MovimentoTD("W", 4, "Easy", "BRSTNCLF1RC4", "4/2/2021", "c", null, 10, 100000)
+    // novaNN.push(td5)
+    // novaNN.push(td6)
+    // novaNN.push(td7)
+    // novaNN.push(td8)
+    // console.log(novaNN.length)
     // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)
     //=================================================================
 
     //=================================================================
-    // Teste de Processar nova Nota de Negociação - depois vai ser pedido pelo Frontend
+    // LÊ o ESTOQUE ATUAL do usuário indicado. Sem as cotações:
+    // let idUser = "M" // Simula qual usuário está logado
+    // let dao = new DaoMovimentoTD()
+    // let r = await dao.leEstoqueAtualTD(idUser)
+    // console.log(`Estoque Atual: `)
+    // console.log(r)
+    //=================================================================
+
+    //=================================================================
+    // Teste Insere e Processar Nova Nota de Negociação
     // let idUser = "M" // Simula qual usuário está logado
     // let td = new ProcessaTesouroDireto()
     // let novaNN = []
@@ -123,4 +118,10 @@ main()
 
 
 
-
+// NÃO ESTÁ SENDO USADO:
+//=================================================================
+    // Inicializa Objetos necessários ao teste "Insere o Estoque Inicial e Processa Nova Nota
+    // de Negociação" - os scripts seguintes
+    // let idUser = "M" // Simula qual usuário está logado
+    // let td = new ProcessaTesouroDireto()
+    //=================================================================

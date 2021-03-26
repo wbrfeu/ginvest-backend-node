@@ -6,7 +6,7 @@ async function main() {
         await inicializaInfra()
     } catch (e) {
         logger.fatal(`Erro ao Inicializar Sistema - ${e}`)
-        return
+        return 
     }
 
     logger.info(`Sistema ${process.env.APP_NAME} Inicializado com Sucesso`)
