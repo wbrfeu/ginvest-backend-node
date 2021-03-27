@@ -51,7 +51,7 @@ async function main() {
     //=================================================================
 
     //=================================================================
-    // LÊ o ESTOQUE ATUAL do usuário indicado. Sem as cotações:
+    // LÊ o ESTOQUE ATUAL do usuário indicado no dao-movimento. Sem as cotações:
     // let idUser = "M" // Simula qual usuário está logado
     // let dao = new DaoMovimentoTD()
     // let r = await dao.leEstoqueAtualTD(idUser)
@@ -60,7 +60,18 @@ async function main() {
     //=================================================================
 
     //=================================================================
-    // Teste Insere e Processar Nova Nota de Negociação
+    // Testa a func salvaNovaNotaNegociacao no arquivo dao-movimento
+    // let dao = new DaoMovimentoTD()
+    // let novaNN = []
+    // let dao1 = new MovimentoTD("M", 10, "Easy", "BRSTNCLTN7N2", "10/02/2021", "C", null, 1, 1*720)
+    // let dao2 = new MovimentoTD("M", 10, "Easy", "BRSTNCLF1RC4", "10/02/2021", "v", null, 25, 25*11000)
+    // novaNN.push(dao1)
+    // novaNN.push(dao2)
+    // await dao.salvaNovaNotaNegociacao(novaNN)
+    //=================================================================
+
+    //=================================================================
+    // Teste Processa e Insere Nova Nota de Negociação
     // let idUser = "M" // Simula qual usuário está logado
     // let td = new ProcessaTesouroDireto()
     // let novaNN = []
@@ -115,13 +126,3 @@ async function main() {
 }
 
 main()
-
-
-
-// NÃO ESTÁ SENDO USADO:
-//=================================================================
-    // Inicializa Objetos necessários ao teste "Insere o Estoque Inicial e Processa Nova Nota
-    // de Negociação" - os scripts seguintes
-    // let idUser = "M" // Simula qual usuário está logado
-    // let td = new ProcessaTesouroDireto()
-    //=================================================================
