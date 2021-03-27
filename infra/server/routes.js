@@ -1,5 +1,5 @@
-import { Root, Status } from '../../api/api-geral.js'
-import { LeEstoqueTD } from '../../api/api-td.js'
+import { Root, Status } from '../api/geral.js'
+import { investimentosTotais } from '../api/invest-totais.js'
 
 function inicializaRotas(server) {
     // Rotas gerais
@@ -7,7 +7,7 @@ function inicializaRotas(server) {
     server.get("/status", Status)
 
     // Rotas de Tesouro Direto
-    server.get("/estoquetd", LeEstoqueTD)
+    server.get("/investimentos/totais", investimentosTotais)
 }
 
 export { inicializaRotas }
