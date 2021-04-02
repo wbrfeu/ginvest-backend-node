@@ -11,8 +11,9 @@ class ProcessaTesouroDireto {
     }
 
     async processaESalvaNovaNotaNegociacao(novaNN, idUser) {
-        const daoMov = new DaoMovimentoTD()
         const nnProcessada = await this.processaNovaNotaNegociacao(novaNN, idUser)
+
+        const daoMov = new DaoMovimentoTD()
         await daoMov.salvaNovaNotaNegociacao(nnProcessada)
     }
 

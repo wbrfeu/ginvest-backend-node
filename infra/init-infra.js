@@ -6,8 +6,8 @@ import { inicializaServidorHttp } from './server/init-server.js'
 // Inicializa todos os recursos necessários ao funcionamento do sistema
 
 async function inicializaInfra() {
-    inicializaVariaveisAmbiente()
     inicializaLogger()
+    inicializaVariaveisAmbiente()
     await inicializaDatabase()
     inicializaServidorHttp()
 }
