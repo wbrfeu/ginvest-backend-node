@@ -6,6 +6,7 @@ import { CotacoesTesouroDireto } from '../domain/usecases/cotacoes-td.js'
 import { ApiTesouroDireto } from '../infra/apis-externas/api-td.js'
 import { DaoCotacoesTD } from '../infra/database/dao-cotacoes-td.js'
 import { logger } from '../infra/logger/logger.js'
+import { Investimentos } from '../domain/usecases/investimentos.js'
 
 
 async function main() {
@@ -122,6 +123,15 @@ async function main() {
     // const estoque = await td.leEstoqueComCotacoesAtuais(idUser)
     // console.log("=============================================")
     // console.log(estoque)    
+    //================================================================
+
+    //================================================================
+    // Teste de trazer todos os Investimentos da Carteira de um Usuário
+    // const idUser = "M" // Simula qual usuário está logado
+    // const inv = new Investimentos()
+    // const invest = await inv.totalizaInvestimentos(idUser)
+    // console.log("Total de Investimentos ===========>")
+    // console.log(invest)
     //================================================================
 }
 
