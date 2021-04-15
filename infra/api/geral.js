@@ -1,9 +1,9 @@
 // Função para atender Endpoint '/' necessário ao Kubernetes
-function Root(req, res) {
+function root(req, res) {
     return res.send()
 }
 
-function Status(req, res) {
+function status(req, res) {
     const obj = {
         mensagem: "Servidor está online",
         timestamp: new Date()
@@ -11,4 +11,4 @@ function Status(req, res) {
     return res.json(obj)
 }
 
-export { Root, Status }
+export { root, status }
