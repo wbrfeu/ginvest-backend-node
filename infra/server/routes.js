@@ -9,7 +9,7 @@ function inicializaRotas(server) {
     server.post("/login/google", loginGoogle)
 
     // Rotas de Tesouro Direto
-    server.get("/investimentos/totais", investimentosTotais)
+    server.get("/investimentos", investimentosTotais)
 }
 
 export { inicializaRotas }
