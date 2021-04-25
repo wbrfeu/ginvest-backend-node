@@ -34,3 +34,12 @@ CREATE TABLE titulos_td (
 	nome text,
 	data_vencimento date
 );
+
+
+CREATE TABLE usuarios (
+	id_usuario text,
+	nome text,
+	sobrenome text,
+	email text,
+	bloqueado bool DEFAULT false
+);
