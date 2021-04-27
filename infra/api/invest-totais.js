@@ -1,12 +1,20 @@
 import { Investimentos } from "../../domain/usecases/investimentos.js"
+import { verificaGinvestToken } from '../servicos/token.js'
 
-async function investimentosTotais(req, res) {
-    const idUser = "M" // Simula qual usuário está logado - TODO - IDuser será extraído da "req"
+async function investimentosTotais(request, response) {
+    const token = request.headers.authorization
+    const decoded = verificaGinvestToken(token)
+
+    if (decoded === null) {
+        response.status(401).send('Token Inválido')
+    }
+
+    const idUser = decoded.sub
     
     const inv = new Investimentos()
     const investimentos = await inv.totalizaInvestimentos(idUser)
 
-    return res.json(investimentos)
+    return response.status(200).json(investimentos)
 }
 
 export { investimentosTotais }

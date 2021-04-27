@@ -6,6 +6,8 @@ function inicializaRotas(server) {
     // Rotas gerais
     server.get("/", root)
     server.get("/status", status)
+
+    // Endpoint que é chamado pelo Frontend axios
     server.post("/login/google", loginGoogle)
 
     // Rotas de Tesouro Direto
