@@ -2,14 +2,8 @@ import { Investimentos } from "../../domain/usecases/investimentos.js"
 import { verificaGinvestToken } from '../servicos/token.js'
 
 async function investimentosTotais(request, response) {
-    const token = request.headers.authorization
-    const decoded = verificaGinvestToken(token)
-
-    if (decoded === null) {
-        response.status(401).send('Token Inválido')
-    }
-
-    const idUser = decoded.sub
+    console.log('Entrou na Rota  ' + request.idUsuarioLogado)
+    const idUser = request.idUsuarioLogado
     
     const inv = new Investimentos()
     const investimentos = await inv.totalizaInvestimentos(idUser)

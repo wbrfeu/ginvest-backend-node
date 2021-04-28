@@ -27,8 +27,16 @@ async function loginGoogle(request, response) {
         data: `code=${body.code}&client_id=${process.env.GOOGLE_CLIENT_ID}&client_secret=${process.env.GOOGLE_CLIENT_SECRET}&redirect_uri=${process.env.GOOGLE_REDIRECT_URI}&grant_type=authorization_code`
     }
 
+    let result = null
+
     try {
-        const result = await axios(requestOptions)
+        result = await axios(requestOptions)
+    } catch (error) {
+        const msg = capturaErro(error)
+        return response.status(400).send("Erro Interno: " + msg)
+    }
+
+    try {        
         const googleTokenPayload = jwt.decode(result.data.id_token)
 
         // A partir do email retornado pega o usuario do banco ou cria o 
