@@ -11,7 +11,7 @@ function inicializaServidorHttp() {
 
     inicializaRotas(server)
 
-    const port = process.env.SYS_PORT || 8080
+    const port = process.env.SYS_PORT
     server.listen(port, () => logger.info(`Servidor ativo em http://localhost:${port}`))
 }
 

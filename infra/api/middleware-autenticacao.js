@@ -4,9 +4,7 @@ import { verificaGinvestToken } from "../servicos/token.js"
 // verificar se o token é válido. Se inválido retorna token inválido.
 // Se válido extrai o usuário do token e coloca no request para a proxima 
 // função possa usá-lo
-function middlewareAuticacao(request, response, next) {
-    console.log('Passou pelo Meddleware')
-
+function middlewareAutenticacao(request, response, next) {
     const token = request.headers.authorization
     if (token === undefined || token === null || token === "") {
         console.log('Token Inexistente')
@@ -23,4 +21,4 @@ function middlewareAuticacao(request, response, next) {
     next()
 }
 
-export { middlewareAuticacao }
+export { middlewareAutenticacao }

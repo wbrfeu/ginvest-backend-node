@@ -1,7 +1,7 @@
 import { root, status } from '../api/geral.js'
 import { investimentosTotais } from '../api/invest-totais.js'
 import { loginGoogle } from '../api/login.js'
-import { middlewareAuticacao } from '../api/middleware-autenticacao.js'
+import { middlewareAutenticacao } from '../api/middleware-autenticacao.js'
 
 function inicializaRotas(server) {
     // Rotas gerais
@@ -12,7 +12,7 @@ function inicializaRotas(server) {
     server.post("/login/google", loginGoogle)
 
     // Rotas de Tesouro Direto
-    server.get("/investimentos", middlewareAuticacao, investimentosTotais)
+    server.get("/investimentos", middlewareAutenticacao, investimentosTotais)
 }
 
 export { inicializaRotas }

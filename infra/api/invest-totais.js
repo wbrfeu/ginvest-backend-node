@@ -1,8 +1,6 @@
 import { Investimentos } from "../../domain/usecases/investimentos.js"
-import { verificaGinvestToken } from '../servicos/token.js'
 
 async function investimentosTotais(request, response) {
-    console.log('Entrou na Rota  ' + request.idUsuarioLogado)
     const idUser = request.idUsuarioLogado
     
     const inv = new Investimentos()
