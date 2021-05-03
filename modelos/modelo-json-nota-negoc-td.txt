@@ -1,0 +1,43 @@
+Modelo 1:
+
+{
+    "numeroNotaNegociacao": "364683",
+    "dataNegociacao": "15/05/2021",
+    "idCorretora": "Easy",
+    "titulos": [
+        { 
+            "codIsin": "IPCA 2035",
+            "indicadorCV": "c",
+            "quantidade": 100,
+            "valorLiquido": 100001
+        }
+    ]
+}
+
+Modelo 2:
+
+{
+    "numeroNotaNegociacao": "364683",
+    "dataNegociacao": "15/05/2021",
+    "idCorretora": "Easy",
+    "titulos": [
+        { 
+            "codIsin": "IPCA 2035",
+            "indicadorCV": "c",
+            "quantidade": 100,
+            "valorLiquido": 100001
+        },
+        { 
+            "codIsin": "IPCA 2024",
+            "indicadorCV": "c",
+            "quantidade": 100,
+            "valorLiquido": 100001
+        },
+        { 
+            "codIsin": "IPCA 2000",
+            "indicadorCV": "c",
+            "quantidade": 100,
+            "valorLiquido": 100001
+        }
+    ]
+}

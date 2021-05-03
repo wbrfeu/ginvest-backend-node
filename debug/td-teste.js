@@ -77,7 +77,7 @@ async function main() {
     // let td = new ProcessaTesouroDireto()
     // let novaNN = []
     // let td10 = new MovimentoTD("M", 10, "Easy", "BRSTNCLTN7N2", "10/02/2021", "C", null, 1, 1*720)
-    // let td20 = new MovimentoTD("M", 10, "Easy", "BRSTNCLF1RC4", "10/02/2021", "v", null, 25, 25*11000)
+    // let td20 = new MovimentoTD("M", 10, "Easy", "BRSTNCLF1RC4", "10/02/2021", "c", null, 25, 25*11000)
     // novaNN.push(td10)
     // novaNN.push(td20)
     // await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)

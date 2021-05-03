@@ -7,7 +7,7 @@ function geraGinvestToken(id_usuario) {
         sub: id_usuario,
         aud: tokenAudience,
         exp: Date.now() + 3600 * 1000 * 2   // Expira em 2 horas
-    }
+    }    
 
     const token = jwt.sign(payload, process.env.JWT_SECRET)
     return token
