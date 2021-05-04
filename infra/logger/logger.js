@@ -1,6 +1,8 @@
 import nodelogger from 'logger'
 import dateformat from 'dateformat'
 
+// usar logger.info, .fatal, .error, .warn, .debug
+
 var logger = null
 
 function inicializaLogger() {
