@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import { geraGinvestToken } from '../servicos/token.js'
 import { leOuCriaUsuario } from '../servicos/usuarios.js'
 import { capturaErro } from '../servicos/capturaerro.js'
+import { logger } from '../logger/logger.js'
 
 async function loginGoogle(request, response) {
     const body = request.body
@@ -59,6 +60,7 @@ async function loginGoogle(request, response) {
             nome: googleTokenPayload.given_name,
             token: ginvestToken
         }
+        logger.info("Login com Sucesso: " + usuarioGoogle.email)
         return response.status(200).json(resultado)
 
     } catch (error) {

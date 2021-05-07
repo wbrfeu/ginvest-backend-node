@@ -88,8 +88,9 @@ class ProcessaTesouroDireto {
                 }
 
                 if (saldoAVenderNN > 0) {
-                    logger.error(`Saldo insuficiente para venda do título ${itemNN.codIsin}. Nota não processada!`)
-                    return []
+                    const msg = `Saldo insuficiente para venda do título ${itemNN.codIsin}. Nota não processada!`
+                    logger.error(msg)
+                    throw new Error(msg)
                 }
             }
         }
@@ -97,7 +98,7 @@ class ProcessaTesouroDireto {
         // Faz o cálculo de Resultados no caso das Vendas
         nnProcessada.forEach(itemNN => {
             itemNN.calculaResultado()
-        });
+        })
 
         return nnProcessada
     }
@@ -107,7 +108,7 @@ class ProcessaTesouroDireto {
         const daoMov = new DaoMovimentoTD()
         const estoqueAtual = await daoMov.leEstoqueAtualTD(idUser)
 
-        if (estoqueAtual === null || estoqueAtual.length === 0) { return null }
+        if (estoqueAtual === null || estoqueAtual.length === 0) { return [] }
 
         const cottd = new CotacoesTesouroDireto()
         const cotacoes = await cottd.leCotacoesAtuais()
