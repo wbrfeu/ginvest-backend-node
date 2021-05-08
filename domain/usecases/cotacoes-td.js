@@ -24,7 +24,7 @@ class CotacoesTesouroDireto {
     dataUltimaAtualizacaoCache = null
     cacheListaCotacoesTD = null
 
-    // Vai ser chamado pelo usecases - APAGAR
+    // TODO - Entender esse comentário: "Vai ser chamado pelo usecases - APAGAR"
     async leCotacoesAtuais() {
         const agora = new Date()
 
