@@ -13,7 +13,7 @@ function inicializaLogger() {
 
         // Imprime no Console caso o Ambiente não seja Produção
         if (process.env.ENV === undefined || process.env.ENV.toLowerCase().startsWith("prod") === false) {
-            console.log(msg)
+            console.log(msg) // NÃO RETIRAR ESTA LINHA
         }
 
         return msg

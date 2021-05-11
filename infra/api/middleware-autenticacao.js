@@ -7,14 +7,12 @@ import { verificaGinvestToken } from "../servicos/token.js"
 function middlewareAutenticacao(request, response, next) {
     const token = request.headers.authorization
     if (token === undefined || token === null || token === "") {
-        console.log('Token Inexistente')
         response.status(401).send('Token Inexistente')
         return
     }
 
     const decodedToken = verificaGinvestToken(token)
     if (decodedToken === null) {
-        console.log('Token Inválido')
         response.status(401).send('Token Inválido')
         return
     }

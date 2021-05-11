@@ -1,18 +1,15 @@
 import { CotacoesTesouroDireto } from "../../domain/usecases/cotacoes-td.js"
+import { DaoCorretoras } from "../database/dao-corretoras.js"
 import { capturaErro } from "../servicos/capturaerro.js"
 
 async function tabelasUteis(request, response) {
     let tabelasuteis = null
 
-    // TODO - Criar Dao e Tabela Elephant para as Corretoras
-    const listaCorretoras = [
-        { idCorretora: "easy", nome: "Easynvest" },
-        { idCorretora: "clear", nome: "Clear" },
-        { idCorretora: "xp", nome: "XP"}
-    ]
-
-
     try {
+        const listaCorretoras = await pegaListaCorretoras()
+
+        const listaTD = await pegaListaTD()
+
         tabelasuteis = {
             corretoras: listaCorretoras,
             td: listaTD,
@@ -31,9 +28,18 @@ async function pegaListaTD() {
     const td = new CotacoesTesouroDireto()
     const listaTD = await td.leCotacoesAtuais()
 
-    console.log(listaTD)
+    const listaTDAlterada = listaTD.map((t) => {
+        return ({ nome: t.nome, codIsin: t.codIsin })
+    })
 
-    return []
+    return listaTDAlterada
+}
+
+async function pegaListaCorretoras() {
+    const dao = new DaoCorretoras()
+    const listaCorretoras = dao.leCorretoras()
+
+    return listaCorretoras
 }
 
 export { tabelasUteis }

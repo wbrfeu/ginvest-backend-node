@@ -43,3 +43,9 @@ CREATE TABLE usuarios (
 	email text,
 	bloqueado bool DEFAULT false
 );
+
+
+CREATE TABLE corretoras (
+	nome text,
+	cod_corretora text
+);

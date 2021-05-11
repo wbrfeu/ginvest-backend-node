@@ -4,10 +4,6 @@ import { convertToDate } from "../tools/conversores.js"
 import moment from 'moment'
 
 function validaNotaNegocTD(objNN) {
-    
-    // TODO - Validação de data não está correta, testar 1111111
-    // TODO - Se não houver nenhum título enviar erro para o frontend...
-
     // valida Data
     if (objNN.dataNegociacao === "") {
         return { status: false, descricao: "Data NÃO informada" }

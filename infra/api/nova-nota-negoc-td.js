@@ -38,9 +38,6 @@ async function novaNotaNegocTD(request, response) {
         novaNN.push(item)
     }
 
-    console.log('novaNN: ')
-    console.log(novaNN)
-
     try {
         await td.processaESalvaNovaNotaNegociacao(novaNN, idUser)        
     } catch (error) {

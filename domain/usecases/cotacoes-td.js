@@ -30,51 +30,41 @@ class CotacoesTesouroDireto {
 
         // Se existe algo na cache retorna a mesma
         if (this.dataUltimaAtualizacaoCache != null) {
-            // console.log("DEBUG -----> Tem info na Cache")
             // Verifica se é necessário atualizar a Cache ante de retorná-la
             if (this.eNecessarioLerApiTD(agora, this.dataUltimaAtualizacaoCache) === true) {
-                // console.log("DEBUG -----> Cache está desatualizada")
                 await this.leApiSalvaBancoESalvaCache()
             }
 
             // Só retorna se tem alguma coisa na Cache, se a leitua da API não falhou
             if (this.cacheListaCotacoesTD != null && this.cacheListaCotacoesTD.length > 0) {
-                // console.log("DEBUG -----> Conseguiu Ler. Lê a Cache")
                 return this.cacheListaCotacoesTD
             }
         }
 
         // Se a Cache está vazia vê se precisa ler a API e atualiza o banco e a Cache
-        // console.log("DEBUG -----> Cache não Leu ou não Serve")
-
         const dao = new DaoCotacoesTD()
         const dataUltimaAtualizacaoNoBD = await dao.leDataUltimAtualizacao()
 
         let listaCotacoesTD = null
 
         if (this.eNecessarioLerApiTD(agora, dataUltimaAtualizacaoNoBD) === true) {
-            // console.log("DEBUG -----> Banco desatualizado, vai ler a API")
             await this.leApiSalvaBancoESalvaCache()
 
             // Só retorna se tem alguma coisa na Cache, se a leitua da API não falhou
             // Após a leitura anterior o cache estará atualizado 
             if (this.cacheListaCotacoesTD != null && this.cacheListaCotacoesTD.length > 0) {
-                // console.log("DEBUG -----> Conseguiu Ler Banco ou API, e atualizou a Cache. Lê a Cache ")
                 return this.cacheListaCotacoesTD
             }
         }
 
         // Lê as cotações do Banco e atualiza a cache
-        // console.log("DEBUG -----> API e cache falharam ou BD atualizado, tenta ler o Banco e depois salva na cache")
         listaCotacoesTD = await dao.leCotacoes()
         this.dataUltimaAtualizacaoCache = dataUltimaAtualizacaoNoBD
         this.cacheListaCotacoesTD = listaCotacoesTD
         if (listaCotacoesTD != null && listaCotacoesTD.length > 0) {
-            // console.log("DEBUG -----> Retorna os dados do Banco")
             return listaCotacoesTD
         }
 
-        // console.log("DEBUG -----> Tudo Falhou, retorna o que tiver na cache")
         logger.info("Não foi possível obter as cotações atuais de TD, pois as 3 fontes falharam: Cache, API e BD")
         return this.cacheListaCotacoesTD
     }
@@ -125,18 +115,15 @@ class CotacoesTesouroDireto {
     }
 
     async leApiSalvaBancoESalvaCache() {
-        // console.log("DEBUG -----> Tenta ler a API")
         const api = new ApiTesouroDireto()
         const listaCotacoesTD = await api.leApiTD()
 
         if (listaCotacoesTD != null && listaCotacoesTD.length > 0) {
             // Salva no Banco Tesouro
-            // console.log("DEBUG -----> Vai Salvar no Banco")
             const dao = new DaoCotacoesTD()
             await dao.apagaCotacoes()
             await dao.salvaListaCotacoes(listaCotacoesTD)
             // Salva no Cache
-            // console.log("DEBUG -----> Vai Salvar na Cache")
             this.dataUltimaAtualizacaoCache = new Date()
             this.cacheListaCotacoesTD = listaCotacoesTD
         }
