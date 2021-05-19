@@ -28,6 +28,7 @@ async function pegaListaTD() {
     const td = new CotacoesTesouroDireto()
     const listaTD = await td.leCotacoesAtuais()
 
+    // Só estamos interessados em retornar o nome e codigo ISIN do título
     const listaTDAlterada = listaTD.map((t) => {
         return ({ nome: t.nome, codIsin: t.codIsin })
     })
