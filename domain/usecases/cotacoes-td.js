@@ -24,7 +24,7 @@ class CotacoesTesouroDireto {
     dataUltimaAtualizacaoCache = null
     cacheListaCotacoesTD = null
 
-    // TODO - Entender esse comentário: "Vai ser chamado pelo usecases - APAGAR"
+    // Esse é o método que vai ser chamado pelo usecases, os demais são apenas acessórios
     async leCotacoesAtuais() {
         const agora = new Date()
 
@@ -65,6 +65,7 @@ class CotacoesTesouroDireto {
             return listaCotacoesTD
         }
 
+        // Se todas as opções falharem retorna o que está na cache, independente do conteúdo
         logger.info("Não foi possível obter as cotações atuais de TD, pois as 3 fontes falharam: Cache, API e BD")
         return this.cacheListaCotacoesTD
     }
@@ -88,7 +89,7 @@ class CotacoesTesouroDireto {
         // Constantes Horário Comercial relativos ao Tesouro Direto
         const horaInicioPregao = 9
         const horaFimPregao = 18
-        const tempoMinAcessarApi = 2
+        const tempoMinAcessarApi = 2 // tempo em horas
 
         const horaLocal = agora.getHours()
         const horaUltimaAtualiz = ultimaAtualizacao.getHours()

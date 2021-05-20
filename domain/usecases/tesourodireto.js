@@ -4,12 +4,7 @@ import { logger } from '../../infra/logger/logger.js'
 import { MovimentoTD } from '../entities/tesourodireto.js'
 import { CotacoesTesouroDireto } from './cotacoes-td.js'
 
-class ProcessaTesouroDireto {
-    ordenaEstoquePorData(estoque) {
-        const estoqueOrdenado = estoque.sort((a, b) => a.dataNegociacao - b.dataNegociacao)
-        return estoqueOrdenado
-    }
-
+class ProcessaTesouroDireto {    
     async processaESalvaNovaNotaNegociacao(novaNN, idUser) {
         const nnProcessada = await this.processaNovaNotaNegociacao(novaNN, idUser)
 
@@ -27,6 +22,7 @@ class ProcessaTesouroDireto {
             const itemNN = novaNN[i];
 
             if (itemNN.indicadorCV === "c" && itemNN.idUser === idUser) {
+                // Simplesmente adiciona na nota processada como veio
                 itemNN.idLote = uuidv4()
                 nnProcessada.push(itemNN)
             }
@@ -81,6 +77,7 @@ class ProcessaTesouroDireto {
                             nnProcessada.push(novoItem)
                         }
 
+                        // Se conseguiu consumir toda a quantidade pretendida na venda, encerra a procura
                         if (saldoAVenderNN === 0) {
                             break
                         }
@@ -131,6 +128,11 @@ class ProcessaTesouroDireto {
         }
 
         return estoqueAtual
+    }
+
+    ordenaEstoquePorData(estoque) {
+        const estoqueOrdenado = estoque.sort((a, b) => a.dataNegociacao - b.dataNegociacao)
+        return estoqueOrdenado
     }
 }
 

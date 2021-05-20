@@ -4,6 +4,7 @@ import { ProcessaTesouroDireto } from './tesourodireto.js'
 
 class Investimentos {
 
+    // Verificar a possibilidade de ordenar dentro da função leEstoque.
     async totalizaInvestimentos(idUser) {
         // Pega os totais de TD
         const td = new ProcessaTesouroDireto()
